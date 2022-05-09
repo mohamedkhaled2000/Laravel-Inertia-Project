@@ -7,119 +7,230 @@
     <!-- </ul> -->
 
 
-      <!-- Navbar -->
-    <ul class="navbar-nav">
-        <li class="nav-item">
-            <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-        </li>
-    </ul>
 
-            <!-- SEARCH FORM -->
-            <form class="form-inline ml-3">
-            <div class="input-group input-group-sm">
-                <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-                <div class="input-group-append">
-                <button class="btn btn-navbar" type="submit">
-                    <i class="fas fa-search"></i>
-                </button>
+
+
+            <div class="nav-header" style="right: 0;">
+                <Link class="brand-logo" href="/">
+                    <img alt="" class="logo-abbr" src="/backend/images/logo-white-2.png">
+                        <img alt="" class="logo-compact" src="/backend/images/logo-text-white.png">
+                            <img alt="" class="brand-title" src="/backend/images/logo-text-white.png">
+                </Link>
+                <div class="nav-control">
+                    <div class="hamburger">
+                        <span class="line">
+                        </span>
+                        <span class="line">
+                        </span>
+                        <span class="line">
+                        </span>
+                    </div>
                 </div>
             </div>
-            </form>
+            <!--**********************************
+            Nav header end
+        ***********************************-->
+            <!--**********************************
+            Header start
+        ***********************************-->
+            <div class="header">
+                <div class="header-content">
+                    <nav class="navbar navbar-expand">
+                        <div class="collapse navbar-collapse justify-content-between">
+                            <div class="header-left">
+                                <div class="search_bar dropdown">
+                                    <span class="search_icon p-3 c-pointer" data-toggle="dropdown">
+                                        <i class="mdi mdi-magnify">
+                                        </i>
+                                    </span>
+                                    <div class="dropdown-menu p-0 m-0">
+                                        <form>
+                                            <input aria-label="Search" class="form-control" placeholder="Search" type="search">
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <ul class="navbar-nav header-right">
+                                <li class="nav-item dropdown notification_dropdown">
+                                    <a class="nav-link bell ai-icon" data-toggle="dropdown" href="#" role="button">
+                                        <svg class="feather feather-bell" fill="none" height="20" id="icon-user" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9">
+                                            </path>
+                                            <path d="M13.73 21a2 2 0 0 1-3.46 0">
+                                            </path>
+                                        </svg>
+                                        <div class="pulse-css">
+                                        </div>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-left">
+                                        <ul class="list-unstyled">
+                                            <li class="media dropdown-item">
+                                                <span class="success">
+                                                    <i class="ti-user">
+                                                    </i>
+                                                </span>
+                                                <div class="media-body">
+                                                    <a href="#">
+                                                        <p>
+                                                            <strong>
+                                                                Martin
+                                                            </strong>
+                                                            has added a
+                                                            <strong>
+                                                                customer
+                                                            </strong>
+                                                            Successfully
+                                                        </p>
+                                                    </a>
+                                                </div>
+                                                <span class="notify-time">
+                                                    3:20 am
+                                                </span>
+                                            </li>
+                                            <li class="media dropdown-item">
+                                                <span class="primary">
+                                                    <i class="ti-shopping-cart">
+                                                    </i>
+                                                </span>
+                                                <div class="media-body">
+                                                    <a href="#">
+                                                        <p>
+                                                            <strong>
+                                                                Jennifer
+                                                            </strong>
+                                                            purchased Light Dashboard 2.0.
+                                                        </p>
+                                                    </a>
+                                                </div>
+                                                <span class="notify-time">
+                                                    3:20 am
+                                                </span>
+                                            </li>
+                                            <li class="media dropdown-item">
+                                                <span class="danger">
+                                                    <i class="ti-bookmark">
+                                                    </i>
+                                                </span>
+                                                <div class="media-body">
+                                                    <a href="#">
+                                                        <p>
+                                                            <strong>
+                                                                Robin
+                                                            </strong>
+                                                            marked a
+                                                            <strong>
+                                                                ticket
+                                                            </strong>
+                                                            as unsolved.
+                                                        </p>
+                                                    </a>
+                                                </div>
+                                                <span class="notify-time">
+                                                    3:20 am
+                                                </span>
+                                            </li>
+                                            <li class="media dropdown-item">
+                                                <span class="primary">
+                                                    <i class="ti-heart">
+                                                    </i>
+                                                </span>
+                                                <div class="media-body">
+                                                    <a href="#">
+                                                        <p>
+                                                            <strong>
+                                                                David
+                                                            </strong>
+                                                            purchased Light Dashboard 1.0.
+                                                        </p>
+                                                    </a>
+                                                </div>
+                                                <span class="notify-time">
+                                                    3:20 am
+                                                </span>
+                                            </li>
+                                            <li class="media dropdown-item">
+                                                <span class="success">
+                                                    <i class="ti-image">
+                                                    </i>
+                                                </span>
+                                                <div class="media-body">
+                                                    <a href="#">
+                                                        <p>
+                                                            <strong>
+                                                                James.
+                                                            </strong>
+                                                            has added a
+                                                            <strong>
+                                                                customer
+                                                            </strong>
+                                                            Successfully
+                                                        </p>
+                                                    </a>
+                                                </div>
+                                                <span class="notify-time">
+                                                    3:20 am
+                                                </span>
+                                            </li>
+                                        </ul>
+                                        <a class="all-notification" href="#">
+                                            See all notifications
+                                            <i class="ti-arrow-right">
+                                            </i>
+                                        </a>
+                                    </div>
+                                </li>
+                                <li class="nav-item dropdown header-profile">
+                                    <a class="nav-link" data-toggle="dropdown" href="#" role="button">
+                                        <img
+                                            :src="$page.props.auth.user.image"
+                                            class="img-circle elevation-2"
+                                            alt="User Image"
+                                        />
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-left">
+                                        <Link href="/profile" class="dropdown-item ai-icon" >
+                                            <svg class="feather feather-user" fill="none" height="18" id="icon-user1" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2">
+                                                </path>
+                                                <circle cx="12" cy="7" r="4">
+                                                </circle>
+                                            </svg>
+                                            <span class="ml-2">
+                                                الملف الشخصى
+                                            </span>
+                                        </Link>
+                                        <a class="dropdown-item ai-icon" href="./email-inbox.html">
+                                            <svg class="feather feather-mail" fill="none" height="18" id="icon-inbox" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+                                                </path>
+                                                <polyline points="22,6 12,13 2,6">
+                                                </polyline>
+                                            </svg>
+                                            <span class="ml-2">
+                                                الرسائل
+                                            </span>
+                                        </a>
+                                        <Link class="dropdown-item ai-icon" :href="route('logout')" method="post">
+                                            <svg class="feather feather-log-out" fill="none" height="18" id="icon-logout" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4">
+                                                </path>
+                                                <polyline points="16 17 21 12 16 7">
+                                                </polyline>
+                                                <line x1="21" x2="9" y1="12" y2="12">
+                                                </line>
+                                            </svg>
+                                            <span class="ml-2">
+                                                تسجل الخروج
+                                            </span>
+                                        </Link>
+                                    </div>
+                                </li>
 
-            <!-- Right navbar links -->
-            <ul class="navbar-nav mr-auto-navbav">
-            <!-- Messages Dropdown Menu -->
-            <li class="nav-item dropdown">
-                <a class="nav-link" data-toggle="dropdown" href="#">
-                <i class="far fa-comments"></i>
-                <span class="badge badge-danger navbar-badge">3</span>
-                </a>
-                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                <a href="#" class="dropdown-item">
-                    <!-- Message Start -->
-                    <div class="media">
-                    <img src="dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
-                    <div class="media-body">
-                        <h3 class="dropdown-item-title">
-                        Brad Diesel
-                        <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
-                        </h3>
-                        <p class="text-sm">Call me whenever you can...</p>
-                        <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                    </div>
-                    </div>
-                    <!-- Message End -->
-                </a>
-                <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item">
-                    <!-- Message Start -->
-                    <div class="media">
-                    <img src="dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-                    <div class="media-body">
-                        <h3 class="dropdown-item-title">
-                        John Pierce
-                        <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
-                        </h3>
-                        <p class="text-sm">I got your message bro</p>
-                        <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                    </div>
-                    </div>
-                    <!-- Message End -->
-                </a>
-                <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item">
-                    <!-- Message Start -->
-                    <div class="media">
-                    <img src="dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-                    <div class="media-body">
-                        <h3 class="dropdown-item-title">
-                        Nora Silvester
-                        <span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span>
-                        </h3>
-                        <p class="text-sm">The subject goes here</p>
-                        <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                    </div>
-                    </div>
-                    <!-- Message End -->
-                </a>
-                <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
+                            </ul>
+                        </div>
+                    </nav>
                 </div>
-            </li>
-            <!-- Notifications Dropdown Menu -->
-            <li class="nav-item dropdown">
-                <a class="nav-link" data-toggle="dropdown" href="#">
-                <i class="far fa-bell"></i>
-                <span class="badge badge-warning navbar-badge">15</span>
-                </a>
-                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                <span class="dropdown-item dropdown-header">15 Notifications</span>
-                <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item">
-                    <i class="fas fa-envelope mr-2"></i> 4 new messages
-                    <span class="float-right text-muted text-sm">3 mins</span>
-                </a>
-                <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item">
-                    <i class="fas fa-users mr-2"></i> 8 friend requests
-                    <span class="float-right text-muted text-sm">12 hours</span>
-                </a>
-                <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item">
-                    <i class="fas fa-file mr-2"></i> 3 new reports
-                    <span class="float-right text-muted text-sm">2 days</span>
-                </a>
-                <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
-                </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#">
-                <i class="fas fa-th-large"></i>
-                </a>
-            </li>
-            </ul>
-        <!-- /.navbar -->
+            </div>
 </template>
 
 <script>

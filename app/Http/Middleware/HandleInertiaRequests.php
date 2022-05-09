@@ -51,7 +51,16 @@ class HandleInertiaRequests extends Middleware
                     'email' => Auth::user()->email ,
                     'image' => Auth::user()->profile_photo_path == null ? 'upload/No-Image.svg.png' : Auth::user()->profile_photo_path
                 ]
-            ] : null
+            ] :
+
+            [
+                'user' => [
+                    'id' => 1 ,
+                    'username' => 'admin' ,
+                    'email' => 'admin@admon.com' ,
+                    'image' =>  'upload/No-Image.svg.png'
+                ]
+            ]
         ]);
     }
 }

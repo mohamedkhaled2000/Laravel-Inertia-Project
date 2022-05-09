@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\GradeRequest;
 use App\Models\ClassRooms;
 use App\Models\Grade;
+use App\Providers\RouteServiceProvider;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Inertia\Inertia;
 
@@ -58,4 +61,6 @@ class GradeController extends Controller
         return redirect()->route('grade.index')->with(['message' => 'تم تعديل المرحلة بنجاح']);
 
     }
+
+
 }

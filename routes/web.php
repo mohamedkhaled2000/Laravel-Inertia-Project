@@ -3,11 +3,11 @@
 use App\Http\Controllers\Backend\Grade\ClassRoomsController;
 use App\Http\Controllers\Backend\Grade\GradeController;
 use App\Http\Controllers\Backend\Sections\SectionController;
+use App\Http\Controllers\Backend\Student\ParentsController;
 use App\Http\Controllers\Backend\UserController;
-use App\Http\Controllers\Controller;
-use App\Models\ClassRooms;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -22,11 +22,14 @@ use Inertia\Inertia;
 |
 */
 
+
 Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified'])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
+    Route::get('/', function () {
+        return Inertia::render('Home');
     })->name('dashboard');
 });
+
+
 
 Route::middleware('auth')->group(function () {
 
@@ -34,7 +37,7 @@ Route::middleware('auth')->group(function () {
     /// User Routes
     Route::get('/', function () {
         return Inertia::render('Home');
-    });
+    })->name('home');
     Route::get('/profile', function () {
         return Inertia::render('Auth/Profile');
     });
@@ -68,6 +71,18 @@ Route::middleware('auth')->group(function () {
         Route::delete('/delete/{id}',[SectionController::class,'destroy'])->name('section.delete');
         Route::get('/edit/{id}',[SectionController::class,'edit'])->name('section.edit');
         Route::post('/update/{id}',[SectionController::class,'update'])->name('section.update');
+    });
+
+    /// Students Routes
+    Route::prefix('students')->group(function(){
+        Route::prefix('parent')->group(function(){
+            Route::get('/show',[ParentsController::class,'show'])->name('parent.show');
+            Route::get('/add',[ParentsController::class,'Add'])->name('parent.add');
+            Route::post('/store',[ParentsController::class,'store'])->name('parent.store');
+            Route::get('/edit/{id}',[ParentsController::class,'edit'])->name('parent.edit');
+            Route::post('/update/{id}',[ParentsController::class,'update'])->name('parent.update');
+            Route::delete('/delete/{id}',[ParentsController::class,'destroy'])->name('parent.delete');
+        });
     });
 
 

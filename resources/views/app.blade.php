@@ -136,53 +136,38 @@
 <html>
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <!-- Tell the browser to be responsive to screen width -->
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="{{asset('backend/plugins/fontawesome-free/css/all.min.css')}}" />
-    <!-- Ionicons -->
+
+
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+        <meta content="" name="keywords"/>
+        <meta content="" name="author"/>
+        <meta content="" name="robots"/>
+        <meta content="Edumin - Bootstrap Admin Dashboard" name="description"/>
+        <meta content="Edumin - Bootstrap Admin Dashboard" property="og:title"/>
+        <meta content="Edumin - Bootstrap Admin Dashboard" property="og:description"/>
+        <meta content="https://edumin.dexignlab.com/xhtml/social-image.png" property="og:image"/>
+        <meta content="telephone=no" name="format-detection">
+            <!-- FAVICONS ICON -->
+            <link href="images/favicon.ico" rel="icon" type="image/x-icon"/>
+            <link href="images/favicon.png" rel="shortcut icon" type="image/x-icon"/>
+            <!-- MOBILE SPECIFIC -->
+            <meta content="width=device-width, initial-scale=1" name="viewport">
+                <!-- STYLESHEETS -->
+            <link href="{{asset('backend/vendor/bootstrap-select/dist/css/bootstrap-select.min.css')}}" rel="stylesheet">
+            <link href="{{asset('backend/css/style.css')}}" rel="stylesheet">
+            <link href="{{asset('backend/css/skin.css')}}" rel="stylesheet">
+
+
+    <link href="{{asset('backend/vendor/jquery-steps/css/jquery.steps.css')}}" rel="stylesheet" />
     <link
-      rel="stylesheet"
-      href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"
-    />
-    <!-- Tempusdominus Bbootstrap 4 -->
-    <link
-      rel="stylesheet"
-      href="{{asset('backend/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css')}}"
-    />
-    <!-- iCheck -->
-    <link
-      rel="stylesheet"
-      href="{{asset('backend/plugins/icheck-bootstrap/icheck-bootstrap.min.css')}}"
-    />
-    <!-- JQVMap -->
-    <link rel="stylesheet" href="{{asset('backend/plugins/jqvmap/jqvmap.min.css')}}" />
-    <!-- Theme style -->
-    <link rel="stylesheet" href="{{asset('backend/dist/css/adminlte.min.css')}}" />
-    <!-- overlayScrollbars -->
-    <link
-      rel="stylesheet"
-      href="{{asset('backend/plugins/overlayScrollbars/css/OverlayScrollbars.min.css')}}"
-    />
-    <!-- Daterange picker -->
-    <link rel="stylesheet" href="{{asset('backend/plugins/daterangepicker/daterangepicker.css')}}" />
-    <!-- summernote -->
-    <link rel="stylesheet" href="{{asset('backend/plugins/summernote/summernote-bs4.css')}}" />
-    <!-- Google Font: Source Sans Pro -->
-    <link
-      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700"
-      rel="stylesheet"
+    href="{{asset('backend/vendor/bootstrap-select/dist/css/bootstrap-select.min.css')}}"
+    rel="stylesheet"
     />
 
-    <!-- Bootstrap 4 RTL -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.rtlcss.com/bootstrap/v4.2.1/css/bootstrap.min.css"
-    />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400&display=swap" rel="stylesheet">
 
 
     <!-- Custom style for RTL -->
@@ -193,47 +178,124 @@
     @inertiaHead
 </head>
 
-<body class="sidebar-mini">
-        @inertia
+<body>
+        <div id="preloader">
+            <div class="sk-three-bounce">
+                <div class="sk-child sk-bounce1">
+                </div>
+                <div class="sk-child sk-bounce2">
+                </div>
+                <div class="sk-child sk-bounce3">
+                </div>
+            </div>
+        </div>
+        <div id="main-wrapper">
+            @inertia
+        </div>
+    <!-- Required vendors -->
+    <script src="{{asset('backend/vendor/global/global.min.js')}}">
+    </script>
+    <script src="{{asset('backend/vendor/bootstrap-select/dist/js/bootstrap-select.min.js')}}">
+    </script>
+    <script src="{{asset('backend/js/custom.min.js')}}">
+    </script>
+    <script src="{{asset('backend/./js/dlabnav-init.js')}}"></script>
 
-        <!-- jQuery -->
-        <script src="{{asset('backend/plugins/jquery/jquery.min.js')}}"></script>
-        <!-- jQuery UI 1.11.4 -->
-        <script src="{{asset('backend/plugins/jquery-ui/jquery-ui.min.js')}}"></script>
-        <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-        <script>
-          $.widget.bridge("uibutton", $.ui.button);
-        </script>
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- Chart Morris plugin files -->
+    <script src="{{asset('backend/./vendor/raphael/raphael.min.js')}}">
+    </script>
+    <script src="{{asset('backend/./vendor/morris/morris.min.js')}}">
+    </script>
+    <!-- Chart piety plugin files -->
+    <script src="{{asset('backend/./vendor/peity/jquery.peity.min.js')}}">
+    </script>
+    <!-- Demo scripts -->
+    <script src="{{asset('backend/js/dashboard/dashboard-2.js')}}">
+    </script>
+    <!-- Svganimation scripts -->
+    <script src="{{asset('backend/vendor/svganimation/vivus.min.js')}}">
+    </script>
+    <script src="{{asset('backend/vendor/svganimation/svg.animation.js')}}">
+    </script>
+    <script src="{{asset('backend/./vendor/jquery-steps/build/jquery.steps.min.js')}}"></script>
+    <script src="{{asset('backend/./vendor/jquery-validation/jquery.validate.min.js')}}"></script>
+    <!-- Form validate init -->
+    <script src="{{asset('backend/./js/plugins-init/jquery.validate-init.js')}}"></script>
 
-        <!-- Bootstrap 4 rtl -->
-        <script src="https://cdn.rtlcss.com/bootstrap/v4.2.1/js/bootstrap.min.js"></script>
-        <!-- Bootstrap 4 -->
-        <script src="{{asset('backend/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-        <!-- ChartJS -->
-        <script src="{{asset('backend/plugins/chart.js/Chart.min.js')}}"></script>
-        <!-- Sparkline -->
-        <script src="{{asset('backend/plugins/sparklines/sparkline.js')}}"></script>
-        <!-- JQVMap -->
-        <script src="{{asset('backend/plugins/jqvmap/jquery.vmap.min.js')}}"></script>
-        <script src="{{asset('backend/plugins/jqvmap/maps/jquery.vmap.world.js')}}"></script>
-        <!-- jQuery Knob Chart -->
-        <script src="{{asset('backend/plugins/jquery-knob/jquery.knob.min.js')}}"></script>
-        <!-- daterangepicker -->
-        <script src="{{asset('backend/plugins/moment/moment.min.js')}}"></script>
-        <script src="{{asset('backend/plugins/daterangepicker/daterangepicker.js')}}"></script>
-        <!-- Tempusdominus Bootstrap 4 -->
-        <script src="{{asset('backend/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js')}}"></script>
-        <!-- Summernote -->
-        <script src="{{asset('backend/plugins/summernote/summernote-bs4.min.js')}}"></script>
-        <!-- overlayScrollbars -->
-        <script src="{{asset('backend/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js')}}"></script>
-        <!-- AdminLTE App -->
-        <script src="{{asset('backend/dist/js/adminlte.js')}}"></script>
-        <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-        <script src="{{asset('backend/dist/js/pages/dashboard.js')}}"></script>
-        <!-- AdminLTE for demo purposes -->
-        <script src="{{asset('backend/dist/js/demo.js')}}"></script>
+    <!-- Form step init -->
+    <script src="{{asset('backend/./js/plugins-init/jquery-steps-init.js')}}"></script>
+
+    <script>
+        $(document).ready(function(){
+
+        var current_fs, next_fs, previous_fs; //fieldsets
+        var opacity;
+
+        $(".next").click(function(){
+
+            current_fs = $(this).parent();
+            next_fs = $(this).parent().next();
+
+            //Add Class Active
+            $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+
+            //show the next fieldset
+            next_fs.show();
+            //hide the current fieldset with style
+            current_fs.animate({opacity: 0}, {
+                step: function(now) {
+                    // for making fielset appear animation
+                    opacity = 1 - now;
+
+                    current_fs.css({
+                        'display': 'none',
+                        'position': 'relative'
+                    });
+                    next_fs.css({'opacity': opacity});
+                },
+                duration: 600
+            });
+        });
+
+        $(".previous").click(function(){
+
+            current_fs = $(this).parent();
+            previous_fs = $(this).parent().prev();
+
+            //Remove class active
+            $("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");
+
+            //show the previous fieldset
+            previous_fs.show();
+
+            //hide the current fieldset with style
+            current_fs.animate({opacity: 0}, {
+                step: function(now) {
+                    // for making fielset appear animation
+                    opacity = 1 - now;
+
+                    current_fs.css({
+                        'display': 'none',
+                        'position': 'relative'
+                    });
+                    previous_fs.css({'opacity': opacity});
+                },
+                duration: 600
+            });
+        });
+
+        $('.radio-group .radio').click(function(){
+            $(this).parent().find('.radio').removeClass('selected');
+            $(this).addClass('selected');
+        });
+
+        $(".submit").click(function(){
+            return false;
+        })
+
+        });
+    </script>
+
 
 </body>
 

@@ -29,4 +29,5 @@ class UserController extends Controller
 
         return redirect()->back()->with(['message' => 'تم تحديث الملف الشخصى بنجاح']);
     }
+
 }

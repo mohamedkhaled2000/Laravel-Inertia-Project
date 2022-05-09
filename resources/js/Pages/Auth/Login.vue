@@ -1,106 +1,88 @@
 <template lang="">
     <Head>
-        <title>Login</title>
+        <title>تسجيل الدخول</title>
         <meta type="description" content="Login Informations" />
     </Head>
 
 
-    <div class="login-box">
-        <div class="login-logo">
-            <a href="../../index2.html"><b>Admin</b>LTE</a>
-        </div>
-        <!-- /.login-logo -->
-        <div class="card">
-            <div class="card-body login-card-body">
-                <p class="login-box-msg">Sign in to start your session</p>
-
-                <form @submit.prevent="form.post(route('login'))">
-                    <div class="input-group mb-3">
+    <div class="authincation h-100">
+      <div class="container h-100">
+        <div class="row justify-content-center h-100 align-items-center">
+          <div class="col-md-6">
+            <div class="authincation-content">
+              <div class="row no-gutters">
+                <div class="col-xl-12">
+                  <div class="auth-form">
+                    <h4 class="text-center mb-4">تسجيل الدخول</h4>
+                    <form @submit.prevent="loginForm.post(route('login'))">
+                      <div class="form-group">
+                        <label><strong>البريد الالكترونى</strong></label>
                         <input
-                            type="email"
-                            v-model="form.email"
-                             name="email"
-                            class="form-control"
-                            placeholder="Email"
+                          type="email"
+                            v-model="loginForm.email"
+                          class="form-control"
                         />
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fas fa-envelope"></span>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div
-                            v-if="form.errors.email"
-                            v-text="form.errors.email"
-                            class="text-danger"
-                        ></div>
-                    <div class="input-group mb-3">
-                        <input
-                            name="password"
-                            v-model="form.password"
-                            type="password"
-                            class="form-control"
-                            placeholder="Password"
-                        />
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fas fa-lock"></span>
-                            </div>
-                        </div>
-
-                    </div>
                         <div
-                            v-if="form.errors.password"
-                            v-text="form.errors.password"
+                            v-if="loginForm.errors.email"
+                            v-text="loginForm.errors.email"
                             class="text-danger"
                         ></div>
-                    <div class="row">
-                        <div class="col-8">
-                            <div class="icheck-primary">
-                                <input type="checkbox" id="remember" name="remember" />
-                                <label for="remember"> Remember Me </label>
-                            </div>
-                        </div>
-                        <!-- /.col -->
-                        <div class="col-4">
-                            <button
-                                type="submit"
-                                class="btn btn-primary btn-block btn-flat"
-                                :disabled="form.processing"
+                      </div>
+                      <div class="form-group">
+                        <label><strong>كلمة المرور</strong></label>
+                        <input
+                            v-model="loginForm.password"
+                          type="password"
+                          class="form-control"
+                        />
+                        <div
+                            v-if="loginForm.errors.password"
+                            v-text="loginForm.errors.password"
+                            class="text-danger"
+                        ></div>
+                      </div>
+                      <div
+                        class="form-row d-flex justify-content-between mt-4 mb-2"
+                      >
+                        <div class="form-group">
+                          <div class="custom-control custom-checkbox ml-1">
+                            <input
+                              type="checkbox"
+                              class="custom-control-input"
+                              id="basic_checkbox_1"
+                            />
+                            <label
+                              class="custom-control-label"
+                              for="basic_checkbox_1"
+                              >تذكرنى</label
                             >
-                                Sign In
-                            </button>
+                          </div>
                         </div>
-                        <!-- /.col -->
-                    </div>
-                </form>
+                        <div class="form-group">
+                          <a href="page-forgot-password.html"
+                            >هل نسيت كلمة المرور؟</a
+                          >
+                        </div>
+                      </div>
+                      <div class="text-center">
+                        <button type="submit" class="btn btn-primary btn-block" :disabled="loginForm.processing">
+                          تسجيل الدخول
+                        </button>
+                      </div>
+                    </form>
 
-                <div class="social-auth-links text-center mb-3">
-                    <p>- OR -</p>
-                    <a href="#" class="btn btn-block btn-primary">
-                        <i class="fab fa-facebook mr-2"></i> Sign in using
-                        Facebook
-                    </a>
-                    <a href="#" class="btn btn-block btn-danger">
-                        <i class="fab fa-google-plus mr-2"></i> Sign in using
-                        Google+
-                    </a>
+                  </div>
                 </div>
-                <!-- /.social-auth-links -->
-
-                <p class="mb-1">
-                    <a href="#">I forgot my password</a>
-                </p>
-                <p class="mb-0">
-                    <a href="register.html" class="text-center"
-                        >Register a new membership</a
-                    >
-                </p>
+              </div>
             </div>
-            <!-- /.login-card-body -->
+          </div>
         </div>
+      </div>
     </div>
+
+
+
+
 </template>
 
 <script>
@@ -111,7 +93,7 @@
 
 <script setup>
     import { useForm } from "@inertiajs/inertia-vue3";
-    let form = useForm({
+    const loginForm = useForm({
         email: "",
         password: "",
     });
