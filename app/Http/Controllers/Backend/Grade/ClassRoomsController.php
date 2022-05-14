@@ -3,17 +3,26 @@
 namespace App\Http\Controllers\Backend\Grade;
 
 use App\Http\Controllers\Controller;
+use App\Http\Repository\Interface\ClassRoomRepositoryInterface;
+use App\Http\Repository\Interface\GradeRepositoryInterface;
 use App\Models\ClassRooms;
 use Illuminate\Http\Request;
-use Illuminate\Support\Arr;
-use Illuminate\Support\Facades\DB;
 use Inertia\Inertia;
 
 class ClassRoomsController extends Controller
 {
+
+    protected $classRoom;
+    protected $grade;
+    public function __construct(ClassRoomRepositoryInterface $classRoom,GradeRepositoryInterface $grade)
+    {
+        $this->classRoom = $classRoom;
+        $this->grade = $grade;
+    }
+
     public function index(){
-        $classes = ClassRooms::with('grade')->orderBy('id','DESC')->get();
-        $grades = DB::table('grades')->get();
+        $classes = $this->classRoom->getAllClassRoom();
+        $grades = $this->grade->getAllGrade();
 
         return Inertia::render('ClassRooms/ClassView',[
             'classes' => $classes,
@@ -31,18 +40,16 @@ class ClassRoomsController extends Controller
             'grade_id.required' => 'هذا الحقل مطلوب',
 
         ]);
-
-        $class = new ClassRooms();
-        $class->class_name = $request->class_name;
-        $class->grade_id = $request->grade_id;
-        $class->save();
+        $this->classRoom->storeClassRoom($request);
 
         return redirect()->route('class.index')->with(['message' => 'تم اضافة الصف بنجاح']);
     }
 
     public function edit($id){
-        $classRom = ClassRooms::find($id);
-        $grades = DB::table('grades')->get();
+
+        $classRom = $this->classRoom->editClassRoom($id);
+        $grades = $this->grade->getAllGrade();
+
         return Inertia::render('ClassRooms/ClassEdit',[
             'classRom' => $classRom,
             'grades' => $grades,
@@ -51,8 +58,8 @@ class ClassRoomsController extends Controller
     }
 
 
-    public function destroy(ClassRooms $class,$id){
-        $class->find($id)->delete();
+    public function destroy($id){
+        $this->classRoom->deleteClassRoom($id);
         return redirect()->back()->with(['message' => 'تم حذف الصف بنجاح']);
     }
 
@@ -67,11 +74,7 @@ class ClassRoomsController extends Controller
 
         ]);
 
-        $class = ClassRooms::find($id);
-        $class->class_name = $request->class_name;
-        $class->grade_id = $request->grade_id;
-        $class->save();
-
+        $this->classRoom->updateClassRoom($request,$id);
         return redirect()->route('class.index')->with(['message' => 'تم تعديل الصف بنجاح']);
     }
 

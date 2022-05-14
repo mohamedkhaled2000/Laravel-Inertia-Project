@@ -4,6 +4,8 @@ use App\Http\Controllers\Backend\Grade\ClassRoomsController;
 use App\Http\Controllers\Backend\Grade\GradeController;
 use App\Http\Controllers\Backend\Sections\SectionController;
 use App\Http\Controllers\Backend\Student\ParentsController;
+use App\Http\Controllers\Backend\Student\StudentController;
+use App\Http\Controllers\Backend\Teacher\TeacherController;
 use App\Http\Controllers\Backend\UserController;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -84,6 +86,14 @@ Route::middleware('auth')->group(function () {
             Route::delete('/delete/{id}',[ParentsController::class,'destroy'])->name('parent.delete');
         });
     });
+
+
+    /// Teacher Routes
+    Route::resource('teacher', TeacherController::class);
+
+    /// Students Routes
+    Route::resource('student', StudentController::class);
+
 
 
 

@@ -11488,7 +11488,7 @@ html[dir="rtl"] [direction="rtl"][data-sidebar-style="compact"]:not([data-layout
 .dlabnav {
   width: 17.1875rem;
   padding-bottom: 112px;
-  height: 100%;
+  height: auto;
   position: absolute;
   top: 5rem;
   padding-top: 0;

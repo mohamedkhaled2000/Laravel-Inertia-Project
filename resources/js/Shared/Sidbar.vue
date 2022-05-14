@@ -23,7 +23,7 @@
 
                         <li>
                             <a aria-expanded="false" class="has-arrow" href="javascript:void()" :class="{'active':$page.url.startsWith('/grade')}">
-                                <i class="la la-user">
+                                <i class="la la-building">
                                 </i>
                                 <span class="nav-text">
                                     المراحل الدراسية
@@ -78,7 +78,7 @@
                                 <i class="la la-users">
                                 </i>
                                 <span class="nav-text">
-                                    الطلاب
+                                    اولياء الامور
                                 </span>
                             </a>
                             <ul aria-expanded="false">
@@ -90,63 +90,43 @@
 
                             </ul>
                         </li>
+
                         <li>
-                            <a aria-expanded="false" class="has-arrow" href="javascript:void()">
-                                <span class="nav-text">
-                                    Courses
-                                </span>
-                                <i class="la la-graduation-cap">
+                            <a aria-expanded="false" class="has-arrow" href="javascript:void()" :class="{'active':$page.url.startsWith('/teacher')}">
+                                <i class="la la-user">
                                 </i>
+                                <span class="nav-text">
+                                    المعلمين
+                                </span>
                             </a>
                             <ul aria-expanded="false">
                                 <li>
-                                    <a href="all-courses.html">
-                                        All Courses
-                                    </a>
+                                    <Link :href="route('teacher.index')" class="nav-link" :class="{'active':$page.component == 'Teacher/TeacherView'}">
+                                        كل المعلمين
+                                    </Link>
                                 </li>
-                                <li>
-                                    <a href="add-courses.html">
-                                        Add Courses
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="edit-courses.html">
-                                        Edit Courses
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="about-courses.html">
-                                        About Courses
-                                    </a>
-                                </li>
+
                             </ul>
                         </li>
+
                         <li>
                             <a aria-expanded="false" class="has-arrow" href="javascript:void()">
-                                <span class="nav-text">
-                                    Library
-                                </span>
-                                <i class="la la-book">
+                                <i class="la la-users">
                                 </i>
+                                <span class="nav-text">
+                                    الطلاب
+                                </span>
                             </a>
                             <ul aria-expanded="false">
                                 <li>
-                                    <a href="all-library.html">
-                                        All Library
-                                    </a>
+                                    <Link :href="route('student.index')">
+                                        قائمة الطلاب
+                                    </Link>
                                 </li>
-                                <li>
-                                    <a href="add-library.html">
-                                        Add Library
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="edit-library.html">
-                                        Edit Library
-                                    </a>
-                                </li>
+
                             </ul>
                         </li>
+
                         <li>
                             <a aria-expanded="false" class="has-arrow" href="javascript:void()">
                                 <span class="nav-text">

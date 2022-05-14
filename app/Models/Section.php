@@ -20,4 +20,8 @@ class Section extends Model
     public function section_room(){
         return $this->belongsTo(ClassRooms::class,'class_room_id','id')->orderByDesc('id');
     }
+
+    public function teachers(){
+        return $this->belongsToMany(Teacher::class,'teacher_section');
+    }
 }

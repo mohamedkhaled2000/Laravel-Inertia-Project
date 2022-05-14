@@ -172,6 +172,7 @@
 
     <!-- Custom style for RTL -->
     <link rel="stylesheet" href="{{asset('backend/dist/css/custom.css')}}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <link href="{{ mix('/css/app.css') }}" rel="stylesheet" />
     @routes
     <script src="{{ mix('/js/app.js') }}" defer></script>
@@ -200,7 +201,6 @@
     <script src="{{asset('backend/js/custom.min.js')}}">
     </script>
     <script src="{{asset('backend/./js/dlabnav-init.js')}}"></script>
-
     <!-- Chart Morris plugin files -->
     <script src="{{asset('backend/./vendor/raphael/raphael.min.js')}}">
     </script>
@@ -224,7 +224,6 @@
 
     <!-- Form step init -->
     <script src="{{asset('backend/./js/plugins-init/jquery-steps-init.js')}}"></script>
-
     <script>
         $(document).ready(function(){
 
@@ -295,6 +294,8 @@
 
         });
     </script>
+
+
 
 
 </body>

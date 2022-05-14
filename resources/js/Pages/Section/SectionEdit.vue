@@ -115,6 +115,22 @@
                         </div>
 
                         <div class="form-group">
+                            <label>اختير المعلمين</label>
+                            <select v-model="form.teacher_id" class="form-select" multiple aria-label="multiple select example" style="width: 100%">
+                                <option v-for="teach in section.teachers" :value="teach.id" Selected>{{ teach.name }}</option>
+                                <option v-for="teacher in teachers" :value="teacher.id">{{ teacher.name }}</option>
+
+                            </select>
+                            <div
+                                v-if="form.errors.teacher_id"
+                                v-text="form.errors.teacher_id"
+                                class="text-danger"
+                            ></div>
+
+                        </div>
+
+
+                        <div class="form-group">
                             <label>اختير الحالة</label>
                             <select
                                 v-model="form.status"
@@ -154,6 +170,8 @@ export default {
         section: Object,
         grades: Object,
         classRom: Object,
+        teachers: Object,
+
     },
 
       data(){
@@ -180,6 +198,7 @@ export default {
             grade_id: props.section.grade_id,
             class_room_id: props.section.class_room_id,
             status: props.section.status,
+            teacher_id: props.section.teachers.id,
         });
 
         return { form };

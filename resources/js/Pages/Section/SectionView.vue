@@ -114,6 +114,7 @@
                                                         </th>
                                                         <th>اسم القسم</th>
                                                         <th>اسم المرحلة</th>
+                                                        <th>المعلمين</th>
                                                         <th>الحالة</th>
                                                         <th>العمليات</th>
                                                     </tr>
@@ -143,16 +144,15 @@
                                                             }}
                                                         </td>
                                                         <td
-                                                            v-if="
-                                                                section.grade_id ==
-                                                                grade.id
-                                                            "
-                                                        >
+                                                            v-if="section.grade_id == grade.id">
                                                             {{
                                                                 section
                                                                     .section_room
                                                                     .class_name
                                                             }}
+                                                        </td>
+                                                        <td v-if="section.grade_id == grade.id">
+                                                            <span v-for="(teacher,n) in section.teachers">{{++n}}-{{teacher.name}}<br></span>
                                                         </td>
                                                         <td
                                                             v-if="
@@ -180,13 +180,9 @@
                                                         <td
                                                             v-if="
                                                                 section.grade_id ==
-                                                                grade.id
-                                                            "
-                                                            class="text-right py-0 align-middle"
-                                                        >
-                                                            <div
-                                                                class="btn-group btn-group-sm"
-                                                            >
+                                                                grade.id"
+                                                            class="text-right py-0 align-middle">
+                                                            <div class="btn-group btn-group-sm">
                                                                 <Link
                                                                     :href="
                                                                         route(
@@ -202,12 +198,7 @@
                                                                 <button
                                                                     type="submit"
                                                                     @click="
-                                                                        destory(
-                                                                            section.id
-                                                                        )
-                                                                    "
-                                                                    class="btn btn-danger"
-                                                                >
+                                                                        destory(section.id)" class="btn btn-danger">
                                                                     <i
                                                                         class="fa fa-trash"
                                                                     ></i>
@@ -306,6 +297,19 @@
                                 class="text-danger"
                             ></div>
                         </div>
+
+                        <div class="form-group">
+                            <label>اختير المعلمين</label>
+                            <select v-model="form.teacher_id" class="form-select" multiple aria-label="multiple select example">
+                                <option v-for="teacher in teachers" :value="teacher.id">{{ teacher.name }}</option>
+
+                            </select>
+                            <div
+                                v-if="form.errors.teacher_id"
+                                v-text="form.errors.teacher_id"
+                                class="text-danger"
+                            ></div>
+                        </div>
                         <div class="modal-footer">
                             <button
                                 type="button"
@@ -337,6 +341,7 @@ export default {
     sections: Object,
     grades: Object,
     classRom: Object,
+    teachers: Object,
   },
   data(){
       return {
@@ -382,6 +387,7 @@ export default {
       section_name: "",
       grade_id: "",
       class_room_id: "",
+      teacher_id: [],
     });
 
     return { destory, form };

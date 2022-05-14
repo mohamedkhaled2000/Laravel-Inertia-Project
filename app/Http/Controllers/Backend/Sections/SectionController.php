@@ -3,24 +3,42 @@
 namespace App\Http\Controllers\Backend\Sections;
 
 use App\Http\Controllers\Controller;
-use App\Models\ClassRooms;
-use App\Models\Grade;
-use App\Models\Section;
+use App\Http\Repository\Interface\ClassRoomRepositoryInterface;
+use App\Http\Repository\Interface\GradeRepositoryInterface;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Inertia\Inertia;
+use App\Http\Repository\Interface\SectionRepositoryInterface;
+use App\Http\Repository\Interface\TeacherRepositoryInterface;
 
 class SectionController extends Controller
 {
+    protected $section;
+    protected $grade;
+    protected $classRom;
+    protected $teacher;
+    public function __construct(SectionRepositoryInterface $section,
+                                GradeRepositoryInterface $grade,
+                                ClassRoomRepositoryInterface $classRom,
+                                TeacherRepositoryInterface $teacher)
+    {
+        $this->section = $section;
+        $this->grade = $grade;
+        $this->classRom = $classRom;
+        $this->teacher = $teacher;
+    }
+
+
     public function index(){
-        $grades = Grade::all();
-        $sections = Section::with('section_room')->orderBy('id','DESC')->get();
-        $classRom = ClassRooms::all();
+        $sections = $this->section->getAllSection();
+        $grades = $this->grade->getAllGrade();
+        $classRom = $this->classRom->getAllClassRoom();
+        $teachers = $this->teacher->getTeacher();
 
         return Inertia::render('Section/SectionView',[
             'sections' => $sections,
             'grades' => $grades,
-            'classRom' => $classRom
+            'classRom' => $classRom,
+            'teachers' => $teachers,
         ]);
     }
 
@@ -30,30 +48,32 @@ class SectionController extends Controller
             'section_name' => 'required',
             'grade_id' => 'required',
             'class_room_id' => 'required',
+            'teacher_id' => 'required',
         ],[
             'section_name.required' => 'هذا الحقل مطلوب',
             'grade_id.required' => 'هذا الحقل مطلوب',
             'class_room_id.required' => 'هذا الحقل مطلوب',
+            'teacher_id.required' => 'هذا الحقل مطلوب',
         ]);
-        $section = new Section();
-        $section->section_name = $request->section_name;
-        $section->grade_id = $request->grade_id;
-        $section->class_room_id = $request->class_room_id;
-        $section->save();
+        $this->section->storeSection($request);
 
         return redirect()->back()->with(['message' => 'تم اضافة القسم بنجاح']);
 
     }
 
     public function edit($id){
-        $section = Section::find($id);
-        $grades = DB::table('grades')->get();
-        $classRom = DB::table('class_rooms')->get();
+        $section = $this->section->editSection($id);
+        $grades = $this->grade->getAllGrade();
+        $classRom = $this->classRom->getAllClassRoom();
+        $teachers = $this->teacher->getTeacher();
+
 
         return Inertia::render('Section/SectionEdit',[
             'section' =>$section,
             'grades' => $grades,
-            'classRom' => $classRom
+            'classRom' => $classRom,
+            'teachers' => $teachers,
+
         ]);
     }
 
@@ -68,20 +88,16 @@ class SectionController extends Controller
             'grade_id.required' => 'هذا الحقل مطلوب',
             'class_room_id.required' => 'هذا الحقل مطلوب',
         ]);
-        $section = Section::find($id);
-        $section->section_name = $request->section_name;
-        $section->grade_id = $request->grade_id;
-        $section->class_room_id = $request->class_room_id;
-        $section->status = $request->status;
-        $section->save();
+        $this->section->updateSection($request,$id);
 
         return redirect()->route('section.index')->with(['message' => 'تم تعديل القسم بنجاح']);
+
+
 
     }
 
     public function destroy($id){
-        Section::find($id)->delete();
-
+        $this->section->deleteSection($id);
         return redirect()->back()->with(['message' => 'تم حذف القسم بنجاح']);
     }
 

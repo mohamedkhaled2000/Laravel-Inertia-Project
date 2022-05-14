@@ -3,61 +3,57 @@
 namespace App\Http\Controllers\Backend\Grade;
 
 use App\Http\Controllers\Controller;
+use App\Http\Repository\Interface\GradeRepositoryInterface;
 use App\Http\Requests\GradeRequest;
 use App\Models\ClassRooms;
-use App\Models\Grade;
-use App\Providers\RouteServiceProvider;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 use Inertia\Inertia;
 
 class GradeController extends Controller
 {
+
+    protected $grade;
+    public function __construct(GradeRepositoryInterface $grade)
+    {
+        return $this->grade = $grade;
+
+    }
     public function index(){
-        $grades = DB::table('grades')->get();
+        $grades = $this->grade->getAllGrade();
         return Inertia::render('Grade/Grade',['grades' => $grades]);
     }
 
     public function add(){
         return Inertia::render('Grade/GradeAdd');
     }
-    public function edit(Grade $grade,$id){
-        $grades = $grade->find($id);
+
+
+    public function edit($id){
+        $grades = $this->grade->editGrade($id);;
         return Inertia::render('Grade/GradeEdit',['grade' => $grades]);
     }
 
     public function store(GradeRequest $request){
 
         $request->validated();
-        $grade = new Grade();
-        $grade->name = $request->name;
-        $grade->notes = $request->notes;
-        $grade->save();
-
+        $this->grade->storeGrade($request);
         return redirect()->route('grade.index')->with(['message' => 'تم اضافة المرحلة بنجاح']);
 
     }
 
-    public function destroy(Grade $grade,$id){
+    public function destroy($id){
         $classes = ClassRooms::whereGrade_id($id)->pluck('grade_id');
         if($classes->count() == 0){
-            $grade->find($id)->delete();
+            $this->grade->deleteGrade($id);
             return redirect()->back()->with(['message' => 'تم حذف المرحلة بنجاح']);
         }
         return redirect()->back()->with(['error' => 'قم بحذف الصفوف اولا']);
 
     }
 
-    public function update(GradeRequest $request,Grade $grade,$id){
+    public function update(GradeRequest $request,$id){
 
         $request->validated();
-
-        $grade->find($id)->update([
-            'name' => $request->name,
-            'notes' => $request->notes
-        ]);
-
+        $this->grade->updateGrade($request,$id);
         return redirect()->route('grade.index')->with(['message' => 'تم تعديل المرحلة بنجاح']);
 
     }

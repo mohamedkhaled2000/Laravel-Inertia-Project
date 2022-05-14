@@ -13,7 +13,7 @@ class UserController extends Controller
 {
     public function userLogin(Request $request){
 
-        $data = User::find(Auth::id());
+        $data = User::findOrFail(Auth::id());
         $data->name = $request->name;
         $data->email = $request->email;
 
