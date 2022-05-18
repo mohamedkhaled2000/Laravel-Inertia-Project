@@ -7,6 +7,9 @@ interface StudentRepositoryInterface {
     public function  getAllStudent();
 
     public function addStudent();
+
+    public function viewStudent($id);
+
     public function  storeStudent($request);
 
     public function  editStudent($id);
@@ -14,5 +17,11 @@ interface StudentRepositoryInterface {
     public function  updateStudent($request,$id);
 
     public function  deleteStudent($id);
+
+    public function  upload_att($request);
+
+    public function  download_att($url);
+
+    public function  delete_att($id);
 
 }

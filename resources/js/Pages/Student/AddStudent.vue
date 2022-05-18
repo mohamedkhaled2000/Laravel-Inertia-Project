@@ -286,6 +286,19 @@
 
                                 </div>
 
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <label>المرفقات</label>
+                                            <div class="fallback">
+                                                <input @input="form.images = $event.target.files" type="file" accept="image/*" multiple />
+                                            </div>
+                                            <progress v-if="form.progress" :value="form.progress.percentage" max="100">
+                                                {{ form.progress.percentage }}%
+                                            </progress>
+                                        </div>
+                                    </div>
+                                </div><br><br>
                                 <button
                                     type="submit"
                                     class="btn btn-primary"
@@ -309,7 +322,6 @@
 </template>
 <script>
 import { useForm } from '@inertiajs/inertia-vue3';
-
 export default {
     props:{
         data: Object
@@ -372,6 +384,7 @@ export default {
             section_id :"",
             parent_id :"",
             academic_year:"",
+            images: [],
 
         });
 
@@ -386,4 +399,5 @@ export default {
     }
 }
 </script>
+
 

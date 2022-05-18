@@ -172,6 +172,7 @@
 
     <!-- Custom style for RTL -->
     <link rel="stylesheet" href="{{asset('backend/dist/css/custom.css')}}" />
+    <link rel="stylesheet" href="{{asset('backend/css/dropzone.css')}}" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <link href="{{ mix('/css/app.css') }}" rel="stylesheet" />
     @routes
@@ -217,6 +218,10 @@
     </script>
     <script src="{{asset('backend/vendor/svganimation/svg.animation.js')}}">
     </script>
+
+    <script src="{{asset('backend/js/dropzone.js')}}">
+    </script>
+
     <script src="{{asset('backend/./vendor/jquery-steps/build/jquery.steps.min.js')}}"></script>
     <script src="{{asset('backend/./vendor/jquery-validation/jquery.validate.min.js')}}"></script>
     <!-- Form validate init -->

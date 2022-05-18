@@ -226,6 +226,15 @@
                                     </div>
                                 </li>
 
+
+                                <li class="nav-item dropdown header-profile">
+                                    <!-- <div id="dark-btn" @click="dark">
+                                        <span></span>
+                                    </div> -->
+                                    <i class="fa-solid fa-moon change-theme" id="theme-button" @click="dark"></i>
+
+                                </li>
+
                             </ul>
                         </div>
                     </nav>
@@ -238,8 +247,68 @@
 export default {
     name: "Nav",
 
+    methods: {
+        dark(){
+            const themeButton = document.getElementById('theme-button')
+            const darkTheme = 'dark-theme'
+            const iconTheme = 'fa-sun'
+
+            // Previously selected topic (if user selected)
+            const selectedTheme = localStorage.getItem('selected-theme')
+            const selectedIcon = localStorage.getItem('selected-icon')
+
+            // We obtain the current theme that the interface has by validating the dark-theme class
+            const getCurrentTheme = () => document.body.classList.contains(darkTheme) ? 'dark' : 'light'
+            const getCurrentIcon = () => themeButton.classList.contains(iconTheme) ? 'fa-moon' : 'fa-sun'
+
+            // We validate if the user previously chose a topic
+            if (selectedTheme) {
+            // If the validation is fulfilled, we ask what the issue was to know if we activated or deactivated the dark
+            document.body.classList[selectedTheme === 'dark' ? 'add' : 'remove'](darkTheme)
+            themeButton.classList[selectedIcon === 'fa-moon' ? 'add' : 'remove'](iconTheme)
+            }
+
+            // Activate / deactivate the theme manually with the button
+            themeButton.addEventListener('click', () => {
+                // Add or remove the dark / icon theme
+                document.body.classList.toggle(darkTheme)
+                themeButton.classList.toggle(iconTheme)
+                // We save the theme and the current icon that the user chose
+                localStorage.setItem('selected-theme', getCurrentTheme())
+                localStorage.setItem('selected-icon', getCurrentIcon())
+            })
+
+        }
+    },
 }
 </script>
+
+<style>
+    .dark-theme .button__gray {
+        background-color: var(--container-color);
+    }
+
+    .dark-theme .button__gray:hover {
+        background-color: hsl(var(--hue), 24%, 16%);
+    }
+
+    .dark-theme .filters__content {
+        background-color: var(--container-color);
+    }
+
+    .dark-theme::-webkit-scrollbar {
+        background-color: hsl(var(--hue), 8%, 16%);
+    }
+
+    .dark-theme::-webkit-scrollbar-thumb {
+        background-color: hsl(var(--hue), 8%, 24%);
+    }
+
+    .dark-theme::-webkit-scrollbar-thumb:hover {
+        background-color: hsl(var(--hue), 8%, 32%);
+    }
+
+</style>
 
 
 

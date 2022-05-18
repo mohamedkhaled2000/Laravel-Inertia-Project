@@ -22,10 +22,26 @@ class Student extends Model
     public function section(){
        return $this->belongsTo(Section::class,'section_id','id');
     }
+    public function parent(){
+       return $this->belongsTo(Parents::class,'parent_id','id');
+    }
+
+    public function nationality(){
+       return $this->belongsTo(Nationality::class,'nationality_id','id');
+    }
+
+    public function type_boold(){
+       return $this->belongsTo(TypeBlood::class,'type_blood_id','id');
+    }
 
     public function setPasswordAttribute($value)
     {
         $this->attributes['password'] = bcrypt($value);
+    }
+
+    public function images()
+    {
+        return $this->morphMany(Image::class, 'imageable');
     }
 
 }

@@ -51,9 +51,7 @@ class StudentController extends Controller
      */
     public function store(StudentRequest $request)
     {
-        $request->validated();
-        $this->Student->storeStudent($request);
-        return redirect()->route('student.index')->with(['message' => 'تم اضافة الطالب بنجاح']);
+        return $this->Student->storeStudent($request);
     }
 
     /**
@@ -64,7 +62,7 @@ class StudentController extends Controller
      */
     public function show($id)
     {
-        //
+       return $this->Student->viewStudent($id);
     }
 
     /**
@@ -109,4 +107,23 @@ class StudentController extends Controller
         $this->Student->deleteStudent($id);
         return redirect()->back()->with(['message' => 'تم حذف الطالب بنجاح']);
     }
+
+
+    public function upload_new(Request $request)
+    {
+        $this->Student->upload_att($request);
+        return redirect()->back()->with(['message' => 'تم اضافة المرفقات بنجاح']);
+    }
+
+
+    public function downloadAtt($url)
+    {
+        return $this->Student->download_att($url);
+    }
+
+    public function deleteAtt($id)
+    {
+        return $this->Student->delete_att($id);
+    }
+
 }

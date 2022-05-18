@@ -244,17 +244,35 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
   --breakpoint-xxl: 1440;
   --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
+  :root{
+    --body-color: #efefef;
+    --nav-color: #143b64;
+    --bg-color: #fff;
+    --se-color: #efefef;
+    --navhead-color: #ff8f16;
+    --navinput-color: #1d548f;
+}
 
+.dark-theme{
+    --body-color: #131923;
+    --nav-color: #1c222b;
+    --bg-color: #1c222b;
+    --font-color: #c3c3c3;
+    --navhead-color: #1c222b;
+    --navinput-color: #282d32;
+}
 *,
 *::before,
 *::after {
-  box-sizing: border-box; }
+  box-sizing: border-box;}
 
 html {
   font-family: 'Cairo', sans-serif;
   line-height: 1.15;
   -webkit-text-size-adjust: 100%;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
+}
 
 article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
   display: block; }
@@ -265,9 +283,9 @@ body {
   font-size: 0.937rem;
   font-weight: 400;
   line-height: 1.5;
-  color: #444;
+  color: var(--font-color);
   text-align: right;
-  background-color: #F7F8FA; }
+  background-color: var(--body-color); }
 
 [tabindex="-1"]:focus:not(:focus-visible) {
   outline: 0 !important; }
@@ -1679,7 +1697,7 @@ pre {
 .table {
   width: 100%;
   margin-bottom: 1rem;
-  color: #444; }
+  color: var(--font-color); }
   .table th,
   .table td {
     padding: 0.75rem;
@@ -2736,10 +2754,10 @@ input[type="button"].btn-block {
   padding: 0.5rem 0;
   margin: 0.125rem 0 0;
   font-size: 0.937rem;
-  color: #444;
+  color: var(--font-color);
   text-align: left;
   list-style: none;
-  background-color: #fff;
+  background-color: var(--bg-color);
   background-clip: padding-box;
   border: 1px solid rgba(0, 0, 0, 0.15);
   border-radius: 0.25rem; }
@@ -2871,7 +2889,7 @@ input[type="button"].btn-block {
   padding: 0.25rem 1.5rem;
   clear: both;
   font-weight: 400;
-  color: #212529;
+  color: var(--font-color);
   text-align: inherit;
   white-space: nowrap;
   background-color: transparent;
@@ -13048,7 +13066,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
 
 [data-nav-headerbg="color_10"][data-theme-version="dark"] .nav-header,
 [data-nav-headerbg="color_10"] .nav-header {
-  background-color: #ff8f16; }
+  background-color: var(--navhead-color); }
   [data-nav-headerbg="color_10"][data-theme-version="dark"] .nav-header .brand-logo,
   [data-nav-headerbg="color_10"] .nav-header .brand-logo {
     color: #fff; }
@@ -13162,12 +13180,12 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
 
 [data-headerbg="color_2"][data-theme-version="dark"] .header,
 [data-headerbg="color_2"] .header {
-  background-color: #143b64;
+  background-color: var(--nav-color);
   color: #fff; }
 [data-headerbg="color_2"][data-theme-version="dark"] .header-left input,
 [data-headerbg="color_2"] .header-left input {
-  border-color: #1d548f;
-  background-color: #1d548f !important;
+  border-color: var(--navinput-color);
+  background-color: var(--navinput-color) !important;
   color: #fff; }
   [data-headerbg="color_2"][data-theme-version="dark"] .header-left input::placeholder,
   [data-headerbg="color_2"] .header-left input::placeholder {
@@ -13177,7 +13195,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
     border-color: #0c223a; }
 [data-headerbg="color_2"][data-theme-version="dark"] .header-left .search_icon,
 [data-headerbg="color_2"] .header-left .search_icon {
-  background-color: #1d548f !important; }
+  background-color: var(--navinput-color) !important; }
   [data-headerbg="color_2"][data-theme-version="dark"] .header-left .search_icon i,
   [data-headerbg="color_2"] .header-left .search_icon i {
     color: #fff; }
@@ -13806,7 +13824,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
 
 [data-sibebarbg="color_2"][data-theme-version="dark"] .dlabnav,
 [data-sibebarbg="color_2"] .dlabnav {
-  background-color: #143b64; }
+  background-color: var(--nav-color); }
   [data-sibebarbg="color_2"][data-theme-version="dark"] .dlabnav .metismenu .nav-label,
   [data-sibebarbg="color_2"] .dlabnav .metismenu .nav-label {
     color: rgba(255, 255, 255, 0.7);
@@ -20661,13 +20679,13 @@ svg text {
   height: 350px; }
 
 .form-control {
-  background: #fff;
-  border: 1px solid #eaeaea;
-  color: #454545; }
+  background: var(--body-color);
+  border: 1px solid var(--bg-color);
+  color: var(--font-color); }
   .form-control:hover, .form-control:focus, .form-control.active {
     box-shadow: none;
-    background: #fff;
-    color: #454545; }
+    background: var(--bg-color);
+    color: var(--font-color); }
 
 .input-rounded {
   border-radius: 100px; }
@@ -21775,7 +21793,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
   border: 1px solid #eaeaea;
   cursor: pointer;
   position: relative;
-  color: #333;
+  color: var(--font-color);
   font-weight: 500; }
   [data-theme-version="dark"] .accordion__header {
     color: #fff;
@@ -22249,7 +22267,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
 
 .page-titles {
   padding: 0.9375rem 1.25rem;
-  background: #fff;
+  background: var(--bg-color);
   margin-bottom: 30px;
   border-radius: 5px; }
   [data-theme-version="dark"] .page-titles {
@@ -22277,9 +22295,9 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
       margin-top: 0;
       margin-bottom: 0; }
       .page-titles .breadcrumb li a {
-        color: #828690; }
+        color: var(--font-color); }
       .page-titles .breadcrumb li.active {
-        color: #555555;
+        color: var(--font-color);
         align-items: center; }
     .page-titles .breadcrumb .breadcrumb-item + .breadcrumb-item:before {
       content: "\e606";
@@ -22618,7 +22636,7 @@ button {
 
 .card {
   margin-bottom: 1.875rem;
-  background-color: #fff;
+  background-color: var(--bg-color);
   transition: all .5s ease-in-out;
   position: relative;
   border: 0px solid transparent;
@@ -22634,7 +22652,7 @@ button {
   .card-title {
     font-size: 16px;
     font-weight: 500;
-    color: #454545;
+    color: var(--font-color);
     text-transform: capitalize;
     letter-spacing: 0.05em; }
     .card-title--large {
@@ -24476,7 +24494,7 @@ table.dataTable.row-border tbody th, table.dataTable.row-border tbody td, table.
   .recentOrderTable table thead th {
     font-size: 12px; }
   .recentOrderTable table tbody td {
-    color: #454545;
+    color: var(--font-color);
     font-weight: 500;
     line-height: 40px; }
     [data-theme-version="dark"] .recentOrderTable table tbody td {

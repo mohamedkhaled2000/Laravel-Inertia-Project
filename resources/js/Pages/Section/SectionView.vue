@@ -106,7 +106,7 @@
                                         data-parent="#accordion-four"
                                     >
                                         <div class="accordion__body--text">
-                                            <table class="table table-bordered">
+                                            <table class="table">
                                                 <thead>
                                                     <tr>
                                                         <th style="width: 10px">

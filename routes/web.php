@@ -93,6 +93,9 @@ Route::middleware('auth')->group(function () {
 
     /// Students Routes
     Route::resource('student', StudentController::class);
+    Route::post('/student/upload', [StudentController::class,'upload_new'])->name('upload_new_att');
+    Route::get('/{url}', [StudentController::class,'downloadAtt'])->name('downloadStudAtt');
+    Route::delete('/delete/{id}', [StudentController::class,'deleteAtt'])->name('deleteStudAtt');
 
 
 

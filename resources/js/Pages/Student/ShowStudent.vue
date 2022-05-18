@@ -61,7 +61,7 @@
                         <div class="card-body">
 
 
-                            <table class="table table-bordered">
+                            <table class="table">
                                         <thead>
                                             <tr>
                                                 <th style="width: 10px">#</th>
@@ -85,8 +85,8 @@
                                                 <td>{{ student.section.section_name }}</td>
                                                 <td class="text-right py-0 align-middle">
                                                     <div class="btn-group btn-group-sm">
-                                                        <Link :href="route('student.edit',student.id)" class="btn btn-info"><i class="fa fa-edit"></i
-                                                        ></Link>
+                                                        <Link :href="route('student.show',student.id)" class="btn btn-warning"><i class="fa fa-eye"></i></Link>
+                                                        <Link :href="route('student.edit',student.id)" class="btn btn-info"><i class="fa fa-edit"></i></Link>
                                                         <button
                                                             type="button"
                                                             @click="destory(student.id)"
