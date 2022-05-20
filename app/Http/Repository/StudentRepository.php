@@ -120,13 +120,19 @@ class StudentRepository implements StudentRepositoryInterface{
         }
     }
 
-    public function download_att($url){
-        return  response()->download(public_path($url));
+    public function download_att($stdName,$file){
+        if(file_exists(public_path('upload/Students/'.$stdName.'/'.$file))){
+            return  response()->download(public_path('upload/Students/'.$stdName.'/'.$file));
+        }else{
+            return 'هذا الملف غير موجود';
+        }
     }
 
     public function delete_att($id){
         $image = Image::findOrFail($id);
-        unlink($image->url);
+        if(file_exists(public_path($image->url))){
+            unlink($image->url);
+        }
         $image->delete();
         return redirect()->back()->with(['message' => 'تم حذف المرفق بنجاح']);
     }

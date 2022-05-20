@@ -19,7 +19,10 @@ class UserController extends Controller
 
         if($request->file('avatar')){
             $file = $request->file('avatar');
-            unlink($data->profile_photo_path);
+            if($data->profile_photo_path != null){
+                unlink($data->profile_photo_path);
+            }
+
             $filename = hexdec(uniqid()).'.'.$file->getClientOriginalExtension();
             Image::make($file)->resize(225,225)->save('upload/profile_img/'.$filename);
             $url = 'upload/profile_img/'.$filename;

@@ -49,7 +49,7 @@ class HandleInertiaRequests extends Middleware
                     'id' => Auth::user()->id ,
                     'username' => Auth::user()->name ,
                     'email' => Auth::user()->email ,
-                    'image' => Auth::user()->profile_photo_path == null ? 'upload/No-Image.svg.png' : Auth::user()->profile_photo_path
+                    'image' => Auth::user()->profile_photo_path == null ? Auth::user()->profile_photo_url : Auth::user()->profile_photo_path
                 ]
             ] :
 

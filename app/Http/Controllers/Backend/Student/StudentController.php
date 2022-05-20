@@ -116,9 +116,9 @@ class StudentController extends Controller
     }
 
 
-    public function downloadAtt($url)
+    public function downloadAtt($stdName,$file)
     {
-        return $this->Student->download_att($url);
+        return $this->Student->download_att($stdName,$file);
     }
 
     public function deleteAtt($id)

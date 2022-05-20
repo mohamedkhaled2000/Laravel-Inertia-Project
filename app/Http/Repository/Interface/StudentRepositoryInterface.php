@@ -20,7 +20,7 @@ interface StudentRepositoryInterface {
 
     public function  upload_att($request);
 
-    public function  download_att($url);
+    public function  download_att($stdName,$file);
 
     public function  delete_att($id);
 

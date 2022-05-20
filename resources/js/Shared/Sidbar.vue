@@ -123,6 +123,11 @@
                                         قائمة الطلاب
                                     </Link>
                                 </li>
+                                <li>
+                                    <Link :href="route('promotion.index')">
+                                        ترقية الطلاب
+                                    </Link>
+                                </li>
 
                             </ul>
                         </li>

@@ -14,6 +14,8 @@ use App\Http\Repository\Interface\ParentRepositoryInterface;
 use App\Http\Repository\ParentRepository;
 use App\Http\Repository\Interface\StudentRepositoryInterface;
 use App\Http\Repository\StudentRepository;
+use App\Http\Repository\Interface\PromotionRepositoryInterface;
+use App\Http\Repository\PromotionRepository;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -33,6 +35,7 @@ class RepoServiceProvider extends ServiceProvider
         $this->registerSection();
         $this->registerParent();
         $this->registerStudent();
+        $this->registerPromotion();
     }
 
     public function registerTeacher(){
@@ -66,6 +69,11 @@ class RepoServiceProvider extends ServiceProvider
         return $this->app->bind(
             StudentRepositoryInterface::class,
             StudentRepository::class);
+    }
+    public function registerPromotion(){
+        return $this->app->bind(
+            PromotionRepositoryInterface::class,
+            PromotionRepository::class);
     }
 
     /**

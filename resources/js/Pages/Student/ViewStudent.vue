@@ -119,7 +119,7 @@
                                                 <td>{{img.url.split("/").pop()}}</td>
                                                 <td>{{ img.created_at.split("T")[0] }}</td>
                                                 <td>
-                                                    <Link :href="route('downloadStudAtt',img.url)" class="btn btn-success"><i class="fa fa-download" title="تحميل"></i></Link>
+                                                    <a :href="'/Std/'+student.name+'/'+img.url.split('/').pop()" class="btn btn-success"><i class="fa fa-download" title="تحميل"></i></a>
                                                     <button
                                                         type="button"
                                                         @click="destory(img.id)"
