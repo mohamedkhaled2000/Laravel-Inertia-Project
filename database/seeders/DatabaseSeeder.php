@@ -14,7 +14,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\User::factory(4)->create();
+        // \App\Models\User::factory(4)->create();
         $this->call(BloodSeeder::class);
         $this->call(NationalitySeed::class);
         $this->call(ReligionSeed::class);
