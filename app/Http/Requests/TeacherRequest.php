@@ -6,6 +6,7 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class TeacherRequest extends FormRequest
 {
+    public $rules;
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -35,10 +36,7 @@ class TeacherRequest extends FormRequest
             "address" => "required",
             "gender" => "required",
         ];
-
-        $rules = $this->mergeClientRules($rules);
-        $rules = $this->checkForUpdate($rules);
-
+        
         return $rules;
     }
 
