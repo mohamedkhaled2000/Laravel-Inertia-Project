@@ -60,9 +60,7 @@
                         </div>
                         <div class="card-body">
 
-                            <div class="table-responsive-sm">
-
-                                <table class="table">
+                                <table class="table table-responsive">
                                             <thead>
                                                 <tr>
                                                     <th style="width: 10px">#</th>
@@ -99,7 +97,6 @@
                                                 </tr>
                                             </tbody>
                                 </table>
-                            </div>
                         <Pagination :links="teachers.links"/>
 
                         </div>
