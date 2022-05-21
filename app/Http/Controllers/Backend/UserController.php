@@ -8,7 +8,6 @@ use Intervention\Image\ImageManagerStatic as Image;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 
-
 class UserController extends Controller
 {
     public function userLogin(Request $request){
@@ -31,6 +30,30 @@ class UserController extends Controller
         $data->save();
 
         return redirect()->back()->with(['message' => 'تم تحديث الملف الشخصى بنجاح']);
+    }
+
+    public function backCover(Request $request){
+        try{
+
+            $User = User::findOrFail(Auth::id());
+
+            if($request->file('photo')){
+                if($User->background_photo != null){
+                    unlink($User->background_photo);
+                }
+
+                $filename = hexdec(uniqid()).'.'.$request->file('photo')->getClientOriginalExtension();
+                Image::make($request->file('photo'))->resize(1600,451)->save('upload/profile_img/'.$filename);
+                $url = 'upload/profile_img/'.$filename;
+                $User->background_photo = $url;
+            }
+            $User->save();
+
+            return redirect()->back()->with(['message' => 'تم تحديث الغلاف بنجاح']);
+        }catch(\Exception $e){
+            return redirect()->back()->with(['message' => $e->getMessage()]);
+        }
+
     }
 
 }

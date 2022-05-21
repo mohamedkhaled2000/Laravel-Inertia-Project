@@ -45,6 +45,7 @@ Route::middleware('auth')->group(function () {
         return Inertia::render('Auth/Profile');
     });
     Route::post('profile/update', [UserController::class,'userLogin']);
+    Route::post('update/backcover', [UserController::class,'backCover']);
 
 
     /// Grade Routes

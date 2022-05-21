@@ -36,7 +36,18 @@
               <div class="profile">
                 <div class="profile-head">
                   <div class="photo-content">
-                    <div class="cover-photo"></div>
+                    <div class="cover-photo" style="position:relative;">
+                        <img class="cover-photo" :src="auth.user.cover" style="position: absolute;
+                                                    height: 100%;
+                                                    width: 100%;">
+                        <input type="file" @input="backForm.photo = $event.target.files[0]" @change="submit()" style="position: absolute;
+                                                    opacity: 0;
+                                                    height: 100%;
+                                                    width: 100%;">
+                        <progress v-if="form.progress" :value="form.progress.percentage" max="100">
+                        {{ form.progress.percentage }}%
+                        </progress>
+                    </div>
                   </div>
                   <div class="profile-info">
                     <div class="row">
@@ -231,6 +242,7 @@
 </template>
 <script>
 import {useForm } from "@inertiajs/inertia-vue3";
+import { Inertia } from '@inertiajs/inertia'
 
 export default {
     props:{
@@ -239,18 +251,28 @@ export default {
     },
 
     setup(props){
-        const form = useForm({
+        let form = useForm({
             name: props.auth.user.username,
             email: props.auth.user.email,
             avatar: "",
         });
 
-        return {form}
+        let backForm = useForm({
+            photo: ""
+        });
+
+        function submit() {
+            Inertia.post('/update/backcover', backForm)
+        }
+
+        return {form,backForm,submit}
     },
 
 }
 
 
 </script>
+
+
 
 

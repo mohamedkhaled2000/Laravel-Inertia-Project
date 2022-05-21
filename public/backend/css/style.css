@@ -249,7 +249,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
     --nav-color: #143b64;
     --bg-color: #fff;
     --se-color: #efefef;
-    --font-color: #201d1d;
+    --font-color: #302d2d;
     --navhead-color: #ff8f16;
     --navinput-color: #1d548f;
 }
@@ -19996,7 +19996,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
 .photo-content {
   position: relative; }
   .photo-content .cover-photo {
-    background: url(../images/profile/cover.jpg);
+    /* background: url(../images/profile/cover.jpg); */
     background-size: cover;
     background-position: center;
     min-height: 250px;
