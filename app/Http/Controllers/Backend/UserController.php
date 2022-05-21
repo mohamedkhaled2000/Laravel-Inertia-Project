@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Intervention\Image\ImageManagerStatic as Image;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use Illuminate\Support\Facades\File;
 
 class UserController extends Controller
 {
@@ -38,8 +39,8 @@ class UserController extends Controller
             $User = User::findOrFail(Auth::id());
 
             if($request->file('photo')){
-                if($User->background_photo != null){
-                    unlink($User->background_photo);
+                if(File::exists($User->background_photo)){
+                    File::delete($User->background_photo);
                 }
 
                 $filename = hexdec(uniqid()).'.'.$request->file('photo')->getClientOriginalExtension();
