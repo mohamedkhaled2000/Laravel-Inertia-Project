@@ -69,10 +69,7 @@
                           تسجيل الدخول
                         </button>
                       </div>
-                    </form><br>
-                    <Link :href="route('register')" class="btn btn-primary btn-block">
-                        تسجيل جديد
-                    </Link>
+                    </form>
 
                   </div>
                 </div>
