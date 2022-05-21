@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string('email');
             $table->string('password');
             $table->string('name');
-            $table->string('speicalize_id');
-            $table->integer('gender');
+            $table->unsignedBigInteger('speicalize_id');
+            $table->tinyInteger('gender');
             $table->string('join_date');
             $table->text('address');
             $table->timestamps();

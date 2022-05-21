@@ -702,7 +702,8 @@ pre {
 
 .no-gutters {
   margin-right: 0;
-  margin-left: 0; }
+  margin-left: 0;
+  margin-top: 10rem; }
   .no-gutters > .col,
   .no-gutters > [class*="col-"] {
     padding-right: 0;
@@ -24198,7 +24199,7 @@ table.dataTable.row-border tbody th, table.dataTable.row-border tbody td, table.
 
 .authincation-content {
   background: #fff;
-  box-shadow: 0 0 35px 0 rgba(154, 161, 171, 0.15);
+  box-shadow: 0 0 35px 0 rgb(62 61 61 / 26%);
   border-radius: 5px; }
   [data-theme-version="dark"] .authincation-content {
     background: #262932;
