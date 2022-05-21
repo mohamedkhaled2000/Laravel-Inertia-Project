@@ -19,7 +19,6 @@ return new class extends Migration
             $table->string('password');
             $table->string('name');
             $table->unsignedBigInteger('speicalize_id');
-            $table->foreign('speicalize_id')->references('id')->on('speicalizes')->onDelete('cascade');
             $table->integer('gender');
             $table->string('join_date');
             $table->text('address');
