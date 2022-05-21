@@ -249,6 +249,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
     --nav-color: #143b64;
     --bg-color: #fff;
     --se-color: #efefef;
+    --font-color: #201d1d;
     --navhead-color: #ff8f16;
     --navinput-color: #1d548f;
 }
@@ -9095,10 +9096,10 @@ a {
   border-radius: 2px; }
   @media only screen and (max-width: 767px) {
     .nav-control {
-      right: -4rem; } }
+      left: -4rem; } }
   @media only screen and (max-width: 575px) {
     .nav-control {
-      right: -4rem; } }
+      left: -4rem; } }
 
 .hamburger {
   display: inline-block;
@@ -9395,10 +9396,15 @@ svg.pulse-svg {
           left: -15vw;
           box-shadow: 0px 5px 10px 0 rgba(0, 0, 0, 0.1);
           border-radius: 4px !important; } }
+
+    @media only screen and (max-width: 767px) {
+      .header-left {
+        right: 0; } }
+
     @media only screen and (max-width: 767px) and (max-width: 575px) {
       .header-left .search_bar .dropdown-menu {
         width: 250px;
-        left: -25vw; } }
+        left: -65vw; } }
     @media only screen and (max-width: 767px) {
           .header-left .search_bar .dropdown-menu .form-control {
             border-radius: 4px !important;
@@ -12619,12 +12625,12 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
   [data-sidebar-style="modern"][data-layout="horizontal"][data-container="boxed"] .dlabnav .metismenu > li > a {
     padding: 0.8125rem 1.25rem; } }
 [data-sidebar-style="overlay"] .dlabnav {
-  left: -100%; }
+  right: -100%; }
   [direction="rtl"][data-sidebar-style="overlay"] .dlabnav {
     left: auto;
     right: -100%; }
 [data-sidebar-style="overlay"] .content-body {
-  margin-left: 0; }
+  margin-right: 0; }
 [data-sidebar-style="overlay"] .nav-header {
   position: absolute; }
   [data-sidebar-style="overlay"] .nav-header .hamburger.is-active {
@@ -12635,7 +12641,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
   position: absolute;
   left: auto; }
 [data-sidebar-style="overlay"] .menu-toggle .dlabnav {
-  left: 0; }
+  right: 0; }
   [direction="rtl"][data-sidebar-style="overlay"] .menu-toggle .dlabnav {
     left: auto;
     right: 0; }
