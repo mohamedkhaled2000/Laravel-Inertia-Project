@@ -104,32 +104,35 @@
 
                                 </div>
                                 <div class="card-body">
-                                    <table class="table">
-                                        <thead>
-                                            <tr>
-                                            <th scope="col">#</th>
-                                            <th scope="col">اسم الملف</th>
-                                            <th scope="col">تاريخه</th>
-                                            <th scope="col">العمليات</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr v-for="(img,i) in student.images">
-                                                <th scope="row">{{++i}}</th>
-                                                <td>{{img.url.split("/").pop()}}</td>
-                                                <td>{{ img.created_at.split("T")[0] }}</td>
-                                                <td>
-                                                    <a :href="'/Std/'+student.name+'/'+img.url.split('/').pop()" class="btn btn-success"><i class="fa fa-download" title="تحميل"></i></a>
-                                                    <button
-                                                        type="button"
-                                                        @click="destory(img.id)"
-                                                        class="btn btn-danger">
-                                                        <i class="fa fa-trash"></i>
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                                    <div class="table-responsive">
+
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                <th scope="col">#</th>
+                                                <th scope="col">اسم الملف</th>
+                                                <th scope="col">تاريخه</th>
+                                                <th scope="col">العمليات</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr v-for="(img,i) in student.images">
+                                                    <th scope="row">{{++i}}</th>
+                                                    <td>{{img.url.split("/").pop()}}</td>
+                                                    <td>{{ img.created_at.split("T")[0] }}</td>
+                                                    <td>
+                                                        <a :href="'/Std/'+student.name+'/'+img.url.split('/').pop()" class="btn btn-success"><i class="fa fa-download" title="تحميل"></i></a>
+                                                        <button
+                                                            type="button"
+                                                            @click="destory(img.id)"
+                                                            class="btn btn-danger">
+                                                            <i class="fa fa-trash"></i>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
                             </div>

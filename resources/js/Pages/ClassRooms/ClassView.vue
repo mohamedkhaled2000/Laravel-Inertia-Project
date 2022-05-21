@@ -73,56 +73,59 @@
                     <div class="card">
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th style="width: 10px"></th>
-                                        <th style="width: 10px">#</th>
-                                        <th>اسم الصف</th>
-                                        <th>اسم المرحلة</th>
-                                        <th>العمليات</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr v-for="(classRom, i) in classes">
-                                        <td>
-                                            <input
-                                                type="checkbox"
-                                                :value="classRom.id"
-                                                v-model="checkname"
-                                            />
-                                        </td>
-                                        <td>{{ ++i }}</td>
-                                        <td>{{ classRom.class_name }}</td>
-                                        <td>{{ classRom.grade.name }}</td>
-                                        <td
-                                            class="text-right py-0 align-middle"
-                                        >
-                                            <div class="btn-group btn-group-sm">
-                                                <Link
-                                                    :href="
-                                                        route(
-                                                            'class.edit',
-                                                            classRom.id
-                                                        )
-                                                    "
-                                                    class="btn btn-info"
-                                                    ><i class="fa fa-edit"></i
-                                                ></Link>
-                                                <button
-                                                    type="submit"
-                                                    @click="
-                                                        destory(classRom.id)
-                                                    "
-                                                    class="btn btn-danger"
-                                                >
-                                                    <i class="fa fa-trash"></i>
-                                                </button>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                            <div class="table-responsive">
+
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th style="width: 10px"></th>
+                                            <th style="width: 10px">#</th>
+                                            <th>اسم الصف</th>
+                                            <th>اسم المرحلة</th>
+                                            <th>العمليات</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr v-for="(classRom, i) in classes">
+                                            <td>
+                                                <input
+                                                    type="checkbox"
+                                                    :value="classRom.id"
+                                                    v-model="checkname"
+                                                />
+                                            </td>
+                                            <td>{{ ++i }}</td>
+                                            <td>{{ classRom.class_name }}</td>
+                                            <td>{{ classRom.grade.name }}</td>
+                                            <td
+                                                class="text-right py-0 align-middle"
+                                            >
+                                                <div class="btn-group btn-group-sm">
+                                                    <Link
+                                                        :href="
+                                                            route(
+                                                                'class.edit',
+                                                                classRom.id
+                                                            )
+                                                        "
+                                                        class="btn btn-info"
+                                                        ><i class="fa fa-edit"></i
+                                                    ></Link>
+                                                    <button
+                                                        type="submit"
+                                                        @click="
+                                                            destory(classRom.id)
+                                                        "
+                                                        class="btn btn-danger"
+                                                    >
+                                                        <i class="fa fa-trash"></i>
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                         <!-- /.card-body -->
                     </div>

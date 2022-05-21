@@ -45,30 +45,33 @@
 
                     <!-- /.card-header -->
                     <div class="card-body">
-                        <table class="table">
-                        <thead>
-                            <tr>
-                            <th style="width: 10px">#</th>
-                            <th>اسم المرحلة</th>
-                            <th>الملاحظات</th>
-                            <th>العمليات</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr v-for="(grade, i) in grades">
-                            <td>{{++i}}</td>
-                            <td>{{ grade.name }}</td>
-                            <td>{{ grade.notes }}</td>
-                            <td class="text-right py-0 align-middle">
-                                    <div class="btn-group btn-group-sm">
-                                        <Link :href="route('grade.edit',grade.id)" class="btn btn-info"><i class="fa fa-edit"></i></Link>
-                                        <button type="submit" @click="destory(grade.id)" class="btn btn-danger"><i class="fa fa-trash"></i></button>
-                                    </div>
-                                </td>
-                            </tr>
+                        <div class="table-responsive">
 
-                        </tbody>
-                        </table>
+                            <table class="table">
+                            <thead>
+                                <tr>
+                                <th style="width: 10px">#</th>
+                                <th>اسم المرحلة</th>
+                                <th>الملاحظات</th>
+                                <th>العمليات</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="(grade, i) in grades">
+                                <td>{{++i}}</td>
+                                <td>{{ grade.name }}</td>
+                                <td>{{ grade.notes }}</td>
+                                <td class="text-right py-0 align-middle">
+                                        <div class="btn-group btn-group-sm">
+                                            <Link :href="route('grade.edit',grade.id)" class="btn btn-info"><i class="fa fa-edit"></i></Link>
+                                            <button type="submit" @click="destory(grade.id)" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                            </table>
+                        </div>
                     </div>
                     <!-- /.card-body -->
                     </div>

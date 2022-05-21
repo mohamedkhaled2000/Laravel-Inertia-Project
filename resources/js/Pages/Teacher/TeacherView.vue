@@ -60,44 +60,46 @@
                         </div>
                         <div class="card-body">
 
+                            <div class="table-responsive">
 
-                            <table class="table">
-                                        <thead>
-                                            <tr>
-                                                <th style="width: 10px">#</th>
-                                                <th>البريد الالكترونى</th>
-                                                <th>اسم المعلم</th>
-                                                <th>التخصص</th>
-                                                <th>الجنس</th>
-                                                <th>تاريخ التوظيف</th>
-                                                <th>العنوان</th>
-                                                <th>العمليات</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr v-for="(teacher, i) in teachers.data">
-                                                <td>{{ ++i }}</td>
-                                                <td>{{ teacher.email }}</td>
-                                                <td>{{ teacher.name }}</td>
-                                                <td>{{ teacher.specialize.name }}</td>
-                                                <td>{{ teacher.gender == 1 ? "ذكر" : "انثى" }}</td>
-                                                <td>{{ teacher.join_date }}</td>
-                                                <td>{{ teacher.address }}</td>
-                                                <td class="text-right py-0 align-middle">
-                                                    <div class="btn-group btn-group-sm">
-                                                        <Link :href="route('teacher.edit',teacher.id)" class="btn btn-info"><i class="fa fa-edit"></i
-                                                        ></Link>
-                                                        <button
-                                                            type="button"
-                                                            @click="destory(teacher.id)"
-                                                            class="btn btn-danger">
-                                                            <i class="fa fa-trash"></i>
-                                                        </button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                            </table>
+                                <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th style="width: 10px">#</th>
+                                                    <th>البريد الالكترونى</th>
+                                                    <th>اسم المعلم</th>
+                                                    <th>التخصص</th>
+                                                    <th>الجنس</th>
+                                                    <th>تاريخ التوظيف</th>
+                                                    <th>العنوان</th>
+                                                    <th>العمليات</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr v-for="(teacher, i) in teachers.data">
+                                                    <td>{{ ++i }}</td>
+                                                    <td>{{ teacher.email }}</td>
+                                                    <td>{{ teacher.name }}</td>
+                                                    <td>{{ teacher.specialize.name }}</td>
+                                                    <td>{{ teacher.gender == 1 ? "ذكر" : "انثى" }}</td>
+                                                    <td>{{ teacher.join_date }}</td>
+                                                    <td>{{ teacher.address }}</td>
+                                                    <td class="text-right py-0 align-middle">
+                                                        <div class="btn-group btn-group-sm">
+                                                            <Link :href="route('teacher.edit',teacher.id)" class="btn btn-info"><i class="fa fa-edit"></i
+                                                            ></Link>
+                                                            <button
+                                                                type="button"
+                                                                @click="destory(teacher.id)"
+                                                                class="btn btn-danger">
+                                                                <i class="fa fa-trash"></i>
+                                                            </button>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                </table>
+                            </div>
                         <Pagination :links="teachers.links"/>
 
                         </div>

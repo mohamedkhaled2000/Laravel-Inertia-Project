@@ -87,9 +87,7 @@
                                         data-toggle="collapse"
                                         :data-target="
                                             '#bordered_no-gutter_collapse' +
-                                            grade.id
-                                        "
-                                    >
+                                            grade.id">
                                         <span class="accordion__header--text">{{
                                             grade.name
                                         }}</span>
@@ -103,111 +101,113 @@
                                             grade.id
                                         "
                                         class="collapse accordion__body"
-                                        data-parent="#accordion-four"
-                                    >
+                                        data-parent="#accordion-four">
                                         <div class="accordion__body--text">
-                                            <table class="table">
-                                                <thead>
-                                                    <tr>
-                                                        <th style="width: 10px">
-                                                            #
-                                                        </th>
-                                                        <th>اسم القسم</th>
-                                                        <th>اسم المرحلة</th>
-                                                        <th>المعلمين</th>
-                                                        <th>الحالة</th>
-                                                        <th>العمليات</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr
-                                                        v-for="(
-                                                            section, i
-                                                        ) in sections"
-                                                    >
-                                                        <td
-                                                            v-if="
-                                                                section.grade_id ==
-                                                                grade.id
-                                                            "
+                                            <div class="table-responsive">
+
+                                                <table class="table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th style="width: 10px">
+                                                                #
+                                                            </th>
+                                                            <th>اسم القسم</th>
+                                                            <th>اسم المرحلة</th>
+                                                            <th>المعلمين</th>
+                                                            <th>الحالة</th>
+                                                            <th>العمليات</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr
+                                                            v-for="(
+                                                                section, i
+                                                            ) in sections"
                                                         >
-                                                            {{ ++i }}
-                                                        </td>
-                                                        <td
-                                                            v-if="
-                                                                section.grade_id ==
-                                                                grade.id
-                                                            "
-                                                        >
-                                                            {{
-                                                                section.section_name
-                                                            }}
-                                                        </td>
-                                                        <td
-                                                            v-if="section.grade_id == grade.id">
-                                                            {{
-                                                                section
-                                                                    .section_room
-                                                                    .class_name
-                                                            }}
-                                                        </td>
-                                                        <td v-if="section.grade_id == grade.id">
-                                                            <span v-for="(teacher,n) in section.teachers">{{++n}}-{{teacher.name}}<br></span>
-                                                        </td>
-                                                        <td
-                                                            v-if="
-                                                                section.grade_id ==
-                                                                grade.id
-                                                            "
-                                                        >
-                                                            <span
-                                                                :class="{
-                                                                    'badge badge-danger':
-                                                                        section.status ==
-                                                                        0,
-                                                                    'badge badge-success':
-                                                                        section.status ==
-                                                                        1,
-                                                                }"
-                                                                >{{
-                                                                    section.status ==
-                                                                    0
-                                                                        ? "معلق"
-                                                                        : "نشط"
-                                                                }}</span
+                                                            <td
+                                                                v-if="
+                                                                    section.grade_id ==
+                                                                    grade.id
+                                                                "
                                                             >
-                                                        </td>
-                                                        <td
-                                                            v-if="
-                                                                section.grade_id ==
-                                                                grade.id"
-                                                            class="text-right py-0 align-middle">
-                                                            <div class="btn-group btn-group-sm">
-                                                                <Link
-                                                                    :href="
-                                                                        route(
-                                                                            'section.edit',
-                                                                            section.id
-                                                                        )
-                                                                    "
-                                                                    class="btn btn-info"
-                                                                    ><i
-                                                                        class="fa fa-edit"
-                                                                    ></i
-                                                                ></Link>
-                                                                <button
-                                                                    type="submit"
-                                                                    @click="
-                                                                        destory(section.id)" class="btn btn-danger">
-                                                                    <i
-                                                                        class="fa fa-trash"
-                                                                    ></i>
-                                                                </button>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
+                                                                {{ ++i }}
+                                                            </td>
+                                                            <td
+                                                                v-if="
+                                                                    section.grade_id ==
+                                                                    grade.id
+                                                                "
+                                                            >
+                                                                {{
+                                                                    section.section_name
+                                                                }}
+                                                            </td>
+                                                            <td
+                                                                v-if="section.grade_id == grade.id">
+                                                                {{
+                                                                    section
+                                                                        .section_room
+                                                                        .class_name
+                                                                }}
+                                                            </td>
+                                                            <td v-if="section.grade_id == grade.id">
+                                                                <span v-for="(teacher,n) in section.teachers">{{++n}}-{{teacher.name}}<br></span>
+                                                            </td>
+                                                            <td
+                                                                v-if="
+                                                                    section.grade_id ==
+                                                                    grade.id
+                                                                "
+                                                            >
+                                                                <span
+                                                                    :class="{
+                                                                        'badge badge-danger':
+                                                                            section.status ==
+                                                                            0,
+                                                                        'badge badge-success':
+                                                                            section.status ==
+                                                                            1,
+                                                                    }"
+                                                                    >{{
+                                                                        section.status ==
+                                                                        0
+                                                                            ? "معلق"
+                                                                            : "نشط"
+                                                                    }}</span
+                                                                >
+                                                            </td>
+                                                            <td
+                                                                v-if="
+                                                                    section.grade_id ==
+                                                                    grade.id"
+                                                                class="text-right py-0 align-middle">
+                                                                <div class="btn-group btn-group-sm">
+                                                                    <Link
+                                                                        :href="
+                                                                            route(
+                                                                                'section.edit',
+                                                                                section.id
+                                                                            )
+                                                                        "
+                                                                        class="btn btn-info"
+                                                                        ><i
+                                                                            class="fa fa-edit"
+                                                                        ></i
+                                                                    ></Link>
+                                                                    <button
+                                                                        type="submit"
+                                                                        @click="
+                                                                            destory(section.id)" class="btn btn-danger">
+                                                                        <i
+                                                                            class="fa fa-trash"
+                                                                        ></i>
+                                                                    </button>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

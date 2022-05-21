@@ -60,44 +60,46 @@
                         </div>
                         <div class="card-body">
 
+                            <div class="table-responsive">
 
-                            <table class="table">
-                                        <thead>
-                                            <tr>
-                                                <th style="width: 10px">#</th>
-                                                <th>البريد الالكترونى</th>
-                                                <th>اسم الطالب</th>
-                                                <th>النوع</th>
-                                                <th>المرحلة الدراسية</th>
-                                                <th>الصف الدراسى</th>
-                                                <th>القسم</th>
-                                                <th>العمليات</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr v-for="(student, i) in students.data">
-                                                <td>{{ ++i }}</td>
-                                                <td>{{ student.email }}</td>
-                                                <td>{{ student.name }}</td>
-                                                <td>{{ student.gender == 1 ? 'ذكر' : 'انثى' }}</td>
-                                                <td>{{ student.grade.name }}</td>
-                                                <td>{{ student.class_room.class_name }}</td>
-                                                <td>{{ student.section.section_name }}</td>
-                                                <td class="text-right py-0 align-middle">
-                                                    <div class="btn-group btn-group-sm">
-                                                        <Link :href="route('student.show',student.id)" class="btn btn-warning"><i class="fa fa-eye"></i></Link>
-                                                        <Link :href="route('student.edit',student.id)" class="btn btn-info"><i class="fa fa-edit"></i></Link>
-                                                        <button
-                                                            type="button"
-                                                            @click="destory(student.id)"
-                                                            class="btn btn-danger">
-                                                            <i class="fa fa-trash"></i>
-                                                        </button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                            </table>
+                                <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th style="width: 10px">#</th>
+                                                    <th>البريد الالكترونى</th>
+                                                    <th>اسم الطالب</th>
+                                                    <th>النوع</th>
+                                                    <th>المرحلة الدراسية</th>
+                                                    <th>الصف الدراسى</th>
+                                                    <th>القسم</th>
+                                                    <th>العمليات</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr v-for="(student, i) in students.data">
+                                                    <td>{{ ++i }}</td>
+                                                    <td>{{ student.email }}</td>
+                                                    <td>{{ student.name }}</td>
+                                                    <td>{{ student.gender == 1 ? 'ذكر' : 'انثى' }}</td>
+                                                    <td>{{ student.grade.name }}</td>
+                                                    <td>{{ student.class_room.class_name }}</td>
+                                                    <td>{{ student.section.section_name }}</td>
+                                                    <td class="text-right py-0 align-middle">
+                                                        <div class="btn-group btn-group-sm">
+                                                            <Link :href="route('student.show',student.id)" class="btn btn-warning"><i class="fa fa-eye"></i></Link>
+                                                            <Link :href="route('student.edit',student.id)" class="btn btn-info"><i class="fa fa-edit"></i></Link>
+                                                            <button
+                                                                type="button"
+                                                                @click="destory(student.id)"
+                                                                class="btn btn-danger">
+                                                                <i class="fa fa-trash"></i>
+                                                            </button>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                </table>
+                            </div>
                         <Pagination :links="students.links"/>
 
                         </div>

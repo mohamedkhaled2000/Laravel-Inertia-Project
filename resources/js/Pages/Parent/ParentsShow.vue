@@ -32,45 +32,46 @@
                             <Link :href="route('parent.add')" class="btn btn-success">اضافة ولى امر</Link>
                         </div>
                         <div class="card-body">
+                            <div class="table-responsive">
 
-
-                            <table class="table">
-                                        <thead>
-                                            <tr>
-                                                <th style="width: 10px">#</th>
-                                                <th>البريد الالكترونى</th>
-                                                <th>اسم الاب</th>
-                                                <th>رقم هوية الاب</th>
-                                                <th>رقم جواز السفر</th>
-                                                <th>رقم هاتف الاب</th>
-                                                <th>وظيفة الاب</th>
-                                                <th>العمليات</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr v-for="(parent, i) in parents.data">
-                                                <td>{{ ++i }}</td>
-                                                <td>{{ parent.email }}</td>
-                                                <td>{{ parent.father_name }}</td>
-                                                <td>{{ parent.father_nation_id }}</td>
-                                                <td>{{ parent.father_passport_id }}</td>
-                                                <td>{{ parent.father_phone }}</td>
-                                                <td>{{ parent.father_job }}</td>
-                                                <td class="text-right py-0 align-middle">
-                                                    <div class="btn-group btn-group-sm">
-                                                        <Link :href="route('parent.edit',parent.id)" class="btn btn-info"><i class="fa fa-edit"></i
-                                                        ></Link>
-                                                        <button
-                                                            type="button"
-                                                            @click="destoryP(parent.id)"
-                                                            class="btn btn-danger">
-                                                            <i class="fa fa-trash"></i>
-                                                        </button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                            </table>
+                                <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th style="width: 10px">#</th>
+                                                    <th>البريد الالكترونى</th>
+                                                    <th>اسم الاب</th>
+                                                    <th>رقم هوية الاب</th>
+                                                    <th>رقم جواز السفر</th>
+                                                    <th>رقم هاتف الاب</th>
+                                                    <th>وظيفة الاب</th>
+                                                    <th>العمليات</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr v-for="(parent, i) in parents.data">
+                                                    <td>{{ ++i }}</td>
+                                                    <td>{{ parent.email }}</td>
+                                                    <td>{{ parent.father_name }}</td>
+                                                    <td>{{ parent.father_nation_id }}</td>
+                                                    <td>{{ parent.father_passport_id }}</td>
+                                                    <td>{{ parent.father_phone }}</td>
+                                                    <td>{{ parent.father_job }}</td>
+                                                    <td class="text-right py-0 align-middle">
+                                                        <div class="btn-group btn-group-sm">
+                                                            <Link :href="route('parent.edit',parent.id)" class="btn btn-info"><i class="fa fa-edit"></i
+                                                            ></Link>
+                                                            <button
+                                                                type="button"
+                                                                @click="destoryP(parent.id)"
+                                                                class="btn btn-danger">
+                                                                <i class="fa fa-trash"></i>
+                                                            </button>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                </table>
+                            </div>
                         <Pagination :links="parents.links"/>
 
                         </div>
