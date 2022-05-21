@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('email');
             $table->string('password');
             $table->string('name');
-            $table->integer('speicalize_id');
+            $table->string('speicalize_id');
             $table->integer('gender');
             $table->string('join_date');
             $table->text('address');
