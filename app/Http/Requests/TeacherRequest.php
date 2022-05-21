@@ -23,13 +23,23 @@ class TeacherRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            "email" => "required|email|unique:teachers,email,".$this->id,
+        $email_rule = 'required|email|unique:teachers,email';
+        $teacher_id = request('teacher.id');
+        if (!is_null($teacher_id)) {
+            $email_rule .= ",{$teacher_id}";
+        }
+        $rules = [
+            "email" => $email_rule,
             "name" => "required",
             "speicalize_id" => "required",
             "address" => "required",
             "gender" => "required",
         ];
+
+        $rules = $this->mergeClientRules($rules);
+        $rules = $this->checkForUpdate($rules);
+
+        return $rules;
     }
 
     public function messages()
