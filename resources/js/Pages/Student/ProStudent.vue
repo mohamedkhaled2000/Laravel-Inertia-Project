@@ -37,7 +37,7 @@
                             <form @submit.prevent="submit">
                                 <div class="row">
 
-                                    <div class="col-md-4 col-sm-12">
+                                    <div class="col-md-3 col-sm-12">
                                         <div class="form-group">
                                             <label>المرحلة الدراسية</label>
                                             <select
@@ -59,7 +59,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-md-4 col-sm-12">
+                                    <div class="col-md-3 col-sm-12">
                                         <div class="form-group" v-if="classessRom.length > 0">
                                             <label>الصف الدراسى</label>
                                             <select
@@ -79,7 +79,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-md-4 col-sm-12">
+                                    <div class="col-md-3 col-sm-12">
                                         <div class="form-group" v-if="sectionss.length > 0">
                                             <label>القسم</label>
                                             <select
@@ -97,12 +97,32 @@
                                             ></div>
                                         </div>
                                     </div>
+
+                                    <div class="col-md-3 col-sm-12">
+                                        <div class="form-group">
+                                            <label>السنة الدراسية</label>
+                                            <select
+                                                v-model="form.academic_year"
+                                                class="form-control"
+                                                style="width: 100%" required>
+                                                <option v-for="y in currentYear" :value="y">
+                                                    {{ y }}
+                                                </option>
+                                            </select>
+                                            <div
+                                                v-if="form.errors.academic_year"
+                                                v-text="form.errors.academic_year"
+                                                class="text-danger"
+                                            ></div>
+                                        </div>
+                                    </div>
+
                                 </div><br><br>
 
                                 <h4>المرحلة الدراسية الجديدة</h4><br>
                                 <div class="row">
 
-                                    <div class="col-md-4 col-sm-12">
+                                    <div class="col-md-3 col-sm-12">
                                         <div class="form-group">
                                             <label>المرحلة الدراسية</label>
                                             <select
@@ -124,7 +144,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-md-4 col-sm-12">
+                                    <div class="col-md-3 col-sm-12">
                                         <div class="form-group" v-if="new_classessRom.length > 0">
                                             <label>الصف الدراسى</label>
                                             <select
@@ -144,7 +164,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-md-4 col-sm-12">
+                                    <div class="col-md-3 col-sm-12">
                                         <div class="form-group" v-if="new_sectionss.length > 0">
                                             <label>القسم</label>
                                             <select
@@ -158,6 +178,26 @@
                                             <div
                                                 v-if="form.errors.new_section_id"
                                                 v-text="form.errors.new_section_id"
+                                                class="text-danger"
+                                            ></div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-md-3 col-sm-12">
+                                        <div class="form-group">
+                                            <label>السنة الدراسية</label>
+                                            <select
+                                                v-model="form.academic_year_new"
+                                                class="form-control"
+                                                style="width: 100%" required>
+                                                <option v-for="y in currentYear" :value="y">
+                                                    {{ y }}
+                                                </option>
+                                            </select>
+                                            <div
+                                                v-if="form.errors.academic_year_new"
+                                                v-text="form.errors.academic_year_new"
                                                 class="text-danger"
                                             ></div>
                                         </div>
@@ -202,6 +242,11 @@ export default {
 
             new_classessRom : [],
             new_sectionss : [],
+
+            currentYear : [
+                new Date().getFullYear(),
+                new Date().getFullYear()+1
+            ],
         }
     },
     methods:{
@@ -254,6 +299,8 @@ export default {
             new_grade_id :"",
             new_class_room_id :"",
             new_section_id :"",
+            academic_year :"",
+            academic_year_new :"",
         });
 
         let submit = () => {

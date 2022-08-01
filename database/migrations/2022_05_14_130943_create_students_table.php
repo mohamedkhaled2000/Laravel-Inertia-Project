@@ -33,6 +33,7 @@ return new class extends Migration
             $table->unsignedBigInteger('parent_id');
             $table->foreign('parent_id')->references('id')->on('parents')->onDelete('cascade');
             $table->string('academic_year');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

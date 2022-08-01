@@ -40,6 +40,3 @@ InertiaProgress.init({
     color:'red'
 });
 
-
-
-

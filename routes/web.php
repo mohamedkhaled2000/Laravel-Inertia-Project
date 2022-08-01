@@ -1,8 +1,11 @@
 <?php
 
+use App\Http\Controllers\Backend\Fees\FeesController;
+use App\Http\Controllers\Backend\Fees\InvoicesController;
 use App\Http\Controllers\Backend\Grade\ClassRoomsController;
 use App\Http\Controllers\Backend\Grade\GradeController;
 use App\Http\Controllers\Backend\Sections\SectionController;
+use App\Http\Controllers\Backend\Student\GraduatedController;
 use App\Http\Controllers\Backend\Student\ParentsController;
 use App\Http\Controllers\Backend\Student\PromotionController;
 use App\Http\Controllers\Backend\Student\StudentController;
@@ -101,6 +104,15 @@ Route::middleware('auth')->group(function () {
 
     /// Promotion Students Routes
     Route::resource('promotion', PromotionController::class);
+    Route::get('prostd/return/{id}', [PromotionController::class,'stdReturn'])->name('stdReturn');
+
+
+    /// Graduated Students Routes
+    Route::resource('graduated', GraduatedController::class);
+
+    /// Fees Routes
+    Route::resource('fees', FeesController::class);
+    Route::resource('invoices', InvoicesController::class);
 
 
 

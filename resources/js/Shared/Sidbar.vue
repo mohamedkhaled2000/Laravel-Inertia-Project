@@ -128,6 +128,16 @@
                                         ترقية الطلاب
                                     </Link>
                                 </li>
+                                <li>
+                                    <Link :href="route('promotion.create')">
+                                        جميع الترقيات
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link :href="route('graduated.index')">
+                                        الطلاب المتخرجين
+                                    </Link>
+                                </li>
 
                             </ul>
                         </li>
@@ -135,27 +145,18 @@
                         <li>
                             <a aria-expanded="false" class="has-arrow" href="javascript:void()">
                                 <span class="nav-text">
-                                    Departments
+                                    الحسابات
                                 </span>
                                 <i class="la la-building">
                                 </i>
                             </a>
                             <ul aria-expanded="false">
                                 <li>
-                                    <a href="all-departments.html">
-                                        All Departments
-                                    </a>
+                                    <Link :href="route('fees.index')">
+                                        الرسوم الدراسية
+                                    </Link>
                                 </li>
-                                <li>
-                                    <a href="add-departments.html">
-                                        Add Departments
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="edit-departments.html">
-                                        Edit Departments
-                                    </a>
-                                </li>
+
                             </ul>
                         </li>
                         <li>

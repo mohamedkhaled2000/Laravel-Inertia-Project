@@ -1,5 +1,5 @@
 <template lang="">
-    <Head title="اضافة طالب جديد" />
+    <Head title="قائمة المتخرجين" />
 
 
     <div  class="content-body">
@@ -19,7 +19,7 @@
                         <Link href="/">الرئيسية</Link>
                         </li>
                         <li class="breadcrumb-item active">
-                        <a href="javascript:void(0)">اضافة طالب جديد</a>
+                        <a href="javascript:void(0)">المتخرجين</a>
                         </li>
                     </ol>
                     </div>
@@ -56,7 +56,7 @@
                             </div>
                     <div class="card">
                         <div class="card-header">
-                            <Link :href="route('student.create')" class="btn btn-success">اضافة طالب جديد</Link>
+                            <Link :href="route('graduated.create')" class="btn btn-success">اضافة متخرج جديد</Link>
                         </div>
                         <div class="card-body">
 
@@ -76,7 +76,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr v-for="(student, i) in students.data">
+                                                <tr v-for="(student, i) in students">
                                                     <td>{{ ++i }}</td>
                                                     <td>{{ student.email }}</td>
                                                     <td>{{ student.name }}</td>
@@ -86,14 +86,18 @@
                                                     <td>{{ student.section.section_name }}</td>
                                                     <td class="text-right py-0 align-middle">
                                                         <div class="btn-group btn-group-sm">
-                                                            <Link :href="route('invoices.show',student.id)" class="btn btn-success" title="اضافة رسوم للطالب"><i class="fa fa-plus"></i></Link>
-                                                            <Link :href="route('student.show',student.id)" class="btn btn-warning" title="عرض بيانات الطالب"><i class="fa fa-eye"></i></Link>
-                                                            <Link :href="route('student.edit',student.id)" class="btn btn-info" title="تعديل"><i class="fa fa-edit"></i></Link>
+
                                                             <button
                                                                 type="button"
-                                                                @click="destory(student.id)"
-                                                                class="btn btn-danger" title="حذف">
-                                                                <i class="fa fa-trash"></i>
+                                                                @click="restore(student.id)"
+                                                                class="btn btn-warning">
+                                                                <i class="fa fa-arrow-up" title="استرجاع الطلاب"></i>
+                                                            </button>
+                                                            <button
+                                                                type="button"
+                                                                @click="destroy(student.id)"
+                                                                class="btn btn-danger">
+                                                                <i class="fa fa-trash" title="استرجاع الطلاب"></i>
                                                             </button>
                                                         </div>
                                                     </td>
@@ -127,10 +131,10 @@ export default {
     },
 
     setup(){
-        const destory = (id) => {
+        let restore = (id) => {
 
             swal({
-                title: "هل انت متاكد من الحذف؟",
+                title: "هل انت متاكد من الاسترجاع؟",
                 icon: "warning",
                 buttons: true,
                 dangerMode: true,
@@ -140,7 +144,7 @@ export default {
             .then((willDelete) => {
                 if (willDelete) {
 
-                    Inertia.delete(route('student.destroy',id),{
+                    Inertia.get(route('graduated.edit',id),{
                         onSuccess: () => {
                             swal("تم الحذف بنجاح", {
                                 icon: "success",
@@ -154,7 +158,34 @@ export default {
             });
         }
 
-        return {destory}
+        let destroy = (id) => {
+
+            swal({
+                title: "هل انت متاكد من الحذف؟",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+                confirmButtonText: 'تاكيد!',
+                cancelButtonText: "الغاء"
+            })
+            .then((willDelete) => {
+                if (willDelete) {
+
+                    Inertia.delete(route('graduated.destroy',id),{
+                        onSuccess: () => {
+                            swal("تم الحذف بنجاح", {
+                                icon: "success",
+                            });
+                        },
+                    });
+
+                } else {
+                    swal("هناك شى خطا");
+                }
+            });
+        }
+
+        return {restore,destroy}
     }
 }
 </script>

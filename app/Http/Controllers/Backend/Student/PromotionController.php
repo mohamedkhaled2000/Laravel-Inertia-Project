@@ -8,6 +8,8 @@ use App\Http\Repository\Interface\PromotionRepositoryInterface;
 use App\Http\Repository\Interface\SectionRepositoryInterface;
 use App\Http\Repository\Interface\GradeRepositoryInterface;
 use App\Http\Repository\Interface\ClassRoomRepositoryInterface;
+use App\Models\Promotion;
+use App\Models\Student;
 use Inertia\Inertia;
 
 class PromotionController extends Controller
@@ -46,59 +48,59 @@ class PromotionController extends Controller
     }
 
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         return $this->promotion->storePromotion($request);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
+    public function create()
+    {
+        return Inertia::render('Student/ShowPromotion',[
+            'promotions' => $this->promotion->getPromotion() ,
+        ]);
+    }
+
     public function show($id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit($id)
     {
-        //
+        Student::whereId($id)->Delete();
+        return redirect()->route('graduated.index')->with(['success' => 'تم التنفيذ بنجاح']);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, $id)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    public function stdReturn($id)
+    {
+        $pro = Promotion::findOrFail($id);
+
+       $student = Student::findOrFail($pro->student_id)->update([
+            'grade_id'      => $pro->from_grade,
+            'class_room_id' => $pro->from_class_room,
+            'section_id'    => $pro->from_section,
+            'academic_year' => $pro->academic_year,
+       ]);
+
+       if($student){
+           $pro->delete();
+       }
+
+       return back()->with(['success' => 'تم استرجاع الطالب بنجاح']);
+
+    }
+
+
     public function destroy($id)
     {
-        //
+        return $this->promotion->destroy($id);
     }
 }

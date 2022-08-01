@@ -25,7 +25,9 @@ class TeacherRequest extends FormRequest
     public function rules()
     {
         $email_rule = 'required|email|unique:teachers,email';
+
         $teacher_id = request('teacher.id');
+        
         if (!is_null($teacher_id)) {
             $email_rule .= ",{$teacher_id}";
         }
@@ -36,7 +38,7 @@ class TeacherRequest extends FormRequest
             "address" => "required",
             "gender" => "required",
         ];
-        
+
         return $rules;
     }
 

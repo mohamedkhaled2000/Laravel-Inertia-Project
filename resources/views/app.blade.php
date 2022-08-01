@@ -222,11 +222,13 @@
     <script src="{{asset('backend/js/dropzone.js')}}">
     </script>
 
-    <script src="{{asset('backend/./vendor/jquery-steps/build/jquery.steps.min.js')}}"></script>
-    <script src="{{asset('backend/./vendor/jquery-validation/jquery.validate.min.js')}}"></script>
-    <!-- Form validate init -->
-    <script src="{{asset('backend/./js/plugins-init/jquery.validate-init.js')}}"></script>
+<script src="{{asset('backend/./vendor/jquery-steps/build/jquery.steps.min.js')}}"></script>
+<script src="{{asset('backend/./vendor/jquery-validation/jquery.validate.min.js')}}"></script>
+<!-- Form validate init -->
+<script src="{{asset('backend/./js/plugins-init/jquery.validate-init.js')}}"></script>
 
+    <script src="{{asset('backend/js/repeater.js')}}">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.14/vue.js"></script>
     <!-- Form step init -->
     <script src="{{asset('backend/./js/plugins-init/jquery-steps-init.js')}}"></script>
     <script>

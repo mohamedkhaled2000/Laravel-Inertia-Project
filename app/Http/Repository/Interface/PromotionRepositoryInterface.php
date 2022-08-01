@@ -6,4 +6,8 @@ interface PromotionRepositoryInterface {
 
     public function  storePromotion($request);
 
+    public function  getPromotion();
+
+    public function  destroy($id);
+
 }
