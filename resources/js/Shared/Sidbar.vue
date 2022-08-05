@@ -157,6 +157,13 @@
                                     </Link>
                                 </li>
 
+                                <li>
+                                    <Link :href="route('invoices.index')">
+                                        الفواتير الدراسية
+                                    </Link>
+                                </li>
+
+
                             </ul>
                         </li>
                         <li>

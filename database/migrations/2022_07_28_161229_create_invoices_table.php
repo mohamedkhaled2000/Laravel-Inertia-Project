@@ -20,7 +20,6 @@ return new class extends Migration
             $table->foreignId('grade_id')->references('id')->on('grades')->onDelete('cascade');
             $table->foreignId('class_room_id')->references('id')->on('class_rooms')->onDelete('cascade');
             $table->foreignId('fee_id')->references('id')->on('fees')->onDelete('cascade');
-            $table->decimal('amount',8,2);
             $table->text('notes')->nullable();
             $table->timestamps();
         });

@@ -15,9 +15,10 @@ return new class extends Migration
     {
         Schema::create('student_accounts', function (Blueprint $table) {
             $table->id();
+            $table->date('date');
+            $table->string('type');
+            $table->foreignId('invoice_id')->references('id')->on('invoices')->onDelete('cascade');
             $table->foreignId('student_id')->references('id')->on('students')->onDelete('cascade');
-            $table->foreignId('grade_id')->references('id')->on('grades')->onDelete('cascade');
-            $table->foreignId('class_room_id')->references('id')->on('class_rooms')->onDelete('cascade');
             $table->decimal('debit',8,2)->nullable();
             $table->decimal('credit',8,2)->nullable();
             $table->text('notes')->nullable();

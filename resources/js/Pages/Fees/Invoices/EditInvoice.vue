@@ -1,5 +1,5 @@
 <template lang="">
-    <Head title="اضافة فاتورة جديدة" />
+    <Head title="تعديل فاتورة" />
 
             <div class="content-body">
                 <div class="container-fluid">
@@ -11,7 +11,7 @@
                             <li class="breadcrumb-item">
                                 <Link href="/">الرئيسية</Link>
                             </li>
-                            <li class="breadcrumb-item active">اضافة فاتورة جديدة</li>
+                            <li class="breadcrumb-item active">تعديل فاتورة</li>
 
                         </ol>
                         </div>
@@ -24,33 +24,31 @@
 
                     <div class="card card-primary">
                         <div class="card-header">
-                            اضافة فاتورة جديدة
+                            تعديل فاتورة
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form role="form"  @submit.prevent="form.post(route('invoices.store'))">
+                        <form role="form"  @submit.prevent="form.put(route('invoices.update',invoice.id))">
                             <div class="card-body">
                                 <div class="border">
                                     <div class="row">
-                                        <div class="col">
+                                        <div class="col-6">
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">اسم الطالب</label>
-                                                <input :value="name" type="text" class="form-control" readonly>
-                                                <div v-if="form.errors.name" v-text="form.errors.name" class="text-danger"></div>
+                                                <input :value="invoice.student.name" type="text" class="form-control" readonly>
                                             </div>
                                         </div>
 
-                                        <div class="col">
-                                            <div class="form-group" v-for="(fe,index) in form.fee" :key="index">
+                                        <div class="col-6">
+                                            <div class="form-group">
                                                 <label>نوع الرسوم</label>
                                                 <select
-                                                    v-model="fe.fee"
+                                                    v-model="form.fee_id"
                                                     class="form-control"
                                                     style="width: 100%"
-                                                    :aria-label="`fee${index}`"
                                                     required>
                                                     <option
-                                                        v-for="fe in fees"
+                                                        v-for="fe in fee"
                                                         :value="fe.id" >
                                                         {{ fe.name }}
                                                     </option>
@@ -64,30 +62,25 @@
 
                                         </div>
 
-                                        <div class="col">
-                                            <div class="form-group" v-for="(am,index) in form.fee" :key="index">
+                                        <div class="col-6">
+                                            <div class="form-group">
                                                 <label for="exampleInputEmail1">المبلغ</label>
                                                     <select
-                                                        v-model="am.amount"
+                                                        v-model="form.amount"
                                                         class="form-control"
                                                         style="width: 100%"
                                                         required>
                                                         <option
-                                                            v-for="fe in fees"
+                                                            v-for="fe in fee"
                                                             :value="fe.price" >
                                                             {{ fe.price }}
                                                         </option>
                                                     </select>
                                                     <div v-if="form.errors.amount" v-text="form.errors.amount" class="text-danger"></div>
-                                                <div class="col-2">
-                                                    <button class="btn btn-danger btn-sm" @click="DeleteField(index)">
-                                                        <i class="fa fa-trash" title="حذف"></i>
-                                                    </button>
-                                                </div>
                                             </div>
                                         </div>
 
-                                        <div class="col">
+                                        <div class="col-6">
                                             <div class="form-group">
                                                 <label for="exampleInputPassword1">البيان</label>
                                                 <textarea v-model="form.notes" type="password" class="form-control" id="exampleInputPassword1" placeholder="ملاحظات"></textarea>
@@ -96,9 +89,6 @@
                                     </div>
 
                                 </div>
-                                <button class="btn btn-success" @click="AddField()">
-                                    ادراج
-                                </button>
 
                             </div>
                             <!-- /.card-body -->
@@ -122,33 +112,18 @@ import { useForm } from '@inertiajs/inertia-vue3';
 
 export default {
     props:{
-        student : Object,
-        fees : Object,
+        invoice : Object,
+        fee : Object,
     },
     data(){
         return {
             form: this.$inertia.form({
-                student_id : this.student.id,
-                grade_id : this.student.grade_id,
-                class_room_id : this.student.class_room_id,
-                fee : [],
-                notes :"",
+                fee_id : this.invoice.fee_id,
+                amount : this.invoice.fee.price,
+                notes : this.invoice.notes,
             }),
 
-            name: this.student.name
         }
-    },
-    methods:{
-        AddField() {
-            this.form.fee.push({
-                fee:"",
-                amount:"",
-            });
-        },
-        DeleteField(index) {
-            this.form.fee.splice(index,1);
-            this.form.amount.splice(index,1);
-        },
     },
 
 }
