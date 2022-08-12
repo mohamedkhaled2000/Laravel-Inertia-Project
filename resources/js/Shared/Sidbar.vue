@@ -163,6 +163,12 @@
                                     </Link>
                                 </li>
 
+                                <li>
+                                    <Link :href="route('receipt.index')">
+                                        سندات القبض
+                                    </Link>
+                                </li>
+
 
                             </ul>
                         </li>

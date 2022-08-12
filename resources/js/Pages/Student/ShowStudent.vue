@@ -55,8 +55,11 @@
                                 {{ $page.props.flash.error }}
                             </div>
                     <div class="card">
-                        <div class="card-header">
+                        <div class="card-header" style="position: relative">
+
+
                             <Link :href="route('student.create')" class="btn btn-success">اضافة طالب جديد</Link>
+                            <input type="search"  v-model="search2" @keyup="search()" class="form-control" placeholder="بحث" style="position: absolute;left:40px;width: auto;"/>
                         </div>
                         <div class="card-body">
 
@@ -87,6 +90,7 @@
                                                     <td class="text-right py-0 align-middle">
                                                         <div class="btn-group btn-group-sm">
                                                             <Link :href="route('invoices.show',student.id)" class="btn btn-success" title="اضافة رسوم للطالب"><i class="fa fa-plus"></i></Link>
+                                                            <Link :href="route('receipt.show',student.id)" class="btn btn-info" title="سند قبض"><i class="fa fa-credit-card-alt"></i></Link>
                                                             <Link :href="route('student.show',student.id)" class="btn btn-warning" title="عرض بيانات الطالب"><i class="fa fa-eye"></i></Link>
                                                             <Link :href="route('student.edit',student.id)" class="btn btn-info" title="تعديل"><i class="fa fa-edit"></i></Link>
                                                             <button
@@ -117,6 +121,7 @@
 import Pagination from '../../Shared/Pagination.vue'
 import { Inertia } from '@inertiajs/inertia';
 import swal from 'sweetalert';
+import throttle from "lodash/throttle";
 
 export default {
     props:{
@@ -124,6 +129,20 @@ export default {
     },
     components:{
         Pagination
+    },
+    data(){
+        return {
+            search2 : ''
+        }
+    },
+    methods:{
+
+        search: throttle(function () {
+            this.$inertia.replace(this.route('student.index',{search: this.search2}))
+
+        },1000)
+
+
     },
 
     setup(){

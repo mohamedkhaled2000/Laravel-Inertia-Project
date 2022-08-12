@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Repository\Interface\ParentRepositoryInterface;
 use App\Http\Repository\Interface\StudentRepositoryInterface;
 use App\Http\Requests\StudentRequest;
+use App\Models\Student;
 use Inertia\Inertia;
 
 class StudentController extends Controller
@@ -22,11 +23,13 @@ class StudentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $students = $this->Student->getAllStudent();
-        return Inertia::render('Student/ShowStudent',[
-            'students' => $students
+        return Inertia::render('Student/ShowStudent', [
+            'students' => Student::with('grade','class_room','section')->when($request->search, function ($quary, $search) {
+                $quary->where('name', 'LIKE', '%' . $search . '%');
+            })->paginate(10)
+
         ]);
     }
 

@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\Backend\Fees\FeesController;
+use App\Http\Controllers\Backend\Fees\FundAccountsController;
 use App\Http\Controllers\Backend\Fees\InvoicesController;
+use App\Http\Controllers\Backend\Fees\ReceiptStudentsController;
 use App\Http\Controllers\Backend\Grade\ClassRoomsController;
 use App\Http\Controllers\Backend\Grade\GradeController;
 use App\Http\Controllers\Backend\Sections\SectionController;
@@ -11,9 +13,6 @@ use App\Http\Controllers\Backend\Student\PromotionController;
 use App\Http\Controllers\Backend\Student\StudentController;
 use App\Http\Controllers\Backend\Teacher\TeacherController;
 use App\Http\Controllers\Backend\UserController;
-use App\Models\User;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -47,6 +46,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', function () {
         return Inertia::render('Auth/Profile');
     });
+
     Route::post('profile/update', [UserController::class,'userLogin']);
     Route::post('update/backcover', [UserController::class,'backCover']);
 
@@ -101,6 +101,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/student/upload', [StudentController::class,'upload_new'])->name('upload_new_att');
     Route::get('Std/{stdName}/{file}', [StudentController::class,'downloadAtt'])->name('downloadStudAtt');
     Route::delete('/delete/{id}', [StudentController::class,'deleteAtt'])->name('deleteStudAtt');
+    Route::get("search/{name}",[StudentController::class,"search"])->name('search');
+
 
     /// Promotion Students Routes
     Route::resource('promotion', PromotionController::class);
@@ -113,6 +115,8 @@ Route::middleware('auth')->group(function () {
     /// Fees Routes
     Route::resource('fees', FeesController::class);
     Route::resource('invoices', InvoicesController::class);
+    Route::resource('receipt', ReceiptStudentsController::class);
+    Route::resource('fund_account', FundAccountsController::class);
 
 
 

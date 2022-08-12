@@ -11,6 +11,7 @@ use App\Models\Parents;
 use App\Models\Section;
 use App\Models\Student;
 use App\Models\TypeBlood;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -136,5 +137,6 @@ class StudentRepository implements StudentRepositoryInterface{
         $image->delete();
         return redirect()->back()->with(['message' => 'تم حذف المرفق بنجاح']);
     }
+
 
 }
