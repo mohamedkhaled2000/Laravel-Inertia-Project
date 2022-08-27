@@ -1,16 +1,23 @@
 <?php
 
+use App\Http\Controllers\Backend\Classes\OnlineClassController;
 use App\Http\Controllers\Backend\Fees\FeesController;
 use App\Http\Controllers\Backend\Fees\FundAccountsController;
 use App\Http\Controllers\Backend\Fees\InvoicesController;
+use App\Http\Controllers\Backend\Fees\PaymentController;
+use App\Http\Controllers\Backend\Fees\ProcessingFeesController;
 use App\Http\Controllers\Backend\Fees\ReceiptStudentsController;
 use App\Http\Controllers\Backend\Grade\ClassRoomsController;
 use App\Http\Controllers\Backend\Grade\GradeController;
 use App\Http\Controllers\Backend\Sections\SectionController;
+use App\Http\Controllers\Backend\Student\Attentances\AttentanceStudentController;
 use App\Http\Controllers\Backend\Student\GraduatedController;
 use App\Http\Controllers\Backend\Student\ParentsController;
 use App\Http\Controllers\Backend\Student\PromotionController;
 use App\Http\Controllers\Backend\Student\StudentController;
+use App\Http\Controllers\Backend\Subjects\AllSubjectsController;
+use App\Http\Controllers\Backend\Subjects\ExamsController;
+use App\Http\Controllers\Backend\Subjects\QuestionController;
 use App\Http\Controllers\Backend\Teacher\TeacherController;
 use App\Http\Controllers\Backend\UserController;
 use Illuminate\Support\Facades\Route;
@@ -117,8 +124,23 @@ Route::middleware('auth')->group(function () {
     Route::resource('invoices', InvoicesController::class);
     Route::resource('receipt', ReceiptStudentsController::class);
     Route::resource('fund_account', FundAccountsController::class);
+    Route::resource('processing_fees', ProcessingFeesController::class);
+    Route::resource('payment_fees', PaymentController::class);
 
+    /// Fees Routes
+    Route::resource('attentance', AttentanceStudentController::class);
 
+    /// Subjects Routes
+    Route::resource('subject', AllSubjectsController::class);
+
+    /// Exams Routes
+    Route::resource('exam', ExamsController::class);
+
+    /// Questions Routes
+    Route::resource('question', QuestionController::class);
+
+    /// Online Classes Routes
+    Route::resource('classes', OnlineClassController::class);
 
 
     // Route::get('/user', function () {

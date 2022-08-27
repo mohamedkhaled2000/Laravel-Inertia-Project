@@ -36,6 +36,14 @@ class Student extends Model
        return $this->belongsTo(TypeBlood::class,'type_blood_id','id');
     }
 
+    public function student_account(){
+       return $this->hasMany(StudentAccount::class,'student_id');
+    }
+
+    public function attentance(){
+       return $this->hasMany(Attentance::class,'student_id');
+    }
+
     public function setPasswordAttribute($value)
     {
         $this->attributes['password'] = bcrypt($value);

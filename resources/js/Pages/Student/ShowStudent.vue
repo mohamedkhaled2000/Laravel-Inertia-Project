@@ -90,7 +90,9 @@
                                                     <td class="text-right py-0 align-middle">
                                                         <div class="btn-group btn-group-sm">
                                                             <Link :href="route('invoices.show',student.id)" class="btn btn-success" title="اضافة رسوم للطالب"><i class="fa fa-plus"></i></Link>
-                                                            <Link :href="route('receipt.show',student.id)" class="btn btn-info" title="سند قبض"><i class="fa fa-credit-card-alt"></i></Link>
+                                                            <Link :href="route('receipt.show',student.id)" class="btn btn-primary" title="سند قبض"><i class="fa fa-credit-card-alt"></i></Link>
+                                                            <Link :href="route('processing_fees.show',student.id)" class="btn btn-secondary" title="استبعاد رسوم"><i class="fa fa-retweet"></i></Link>
+                                                            <Link :href="route('payment_fees.show',student.id)" class="btn btn-dark" title="سند صرف"><i class="fa fa-money"></i></Link>
                                                             <Link :href="route('student.show',student.id)" class="btn btn-warning" title="عرض بيانات الطالب"><i class="fa fa-eye"></i></Link>
                                                             <Link :href="route('student.edit',student.id)" class="btn btn-info" title="تعديل"><i class="fa fa-edit"></i></Link>
                                                             <button

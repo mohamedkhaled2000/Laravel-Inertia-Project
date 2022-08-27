@@ -1,5 +1,5 @@
 <template lang="">
-    <Head title="الاقسام الدراسية" />
+    <Head title="الحضور والغياب" />
 
     <div class="content-body">
         <div class="container-fluid">
@@ -12,7 +12,7 @@
                         <li class="breadcrumb-item">
                             <Link href="/">الرئيسية</Link>
                         </li>
-                        <li class="breadcrumb-item active">الاقسام الدراسية</li>
+                        <li class="breadcrumb-item active">الحضور والغياب</li>
                     </ol>
                 </div>
             </div>
@@ -174,24 +174,11 @@
                                                                 <div class="btn-group btn-group-sm">
                                                                     <Link
                                                                         :href="
-                                                                            route(
-                                                                                'section.edit',
-                                                                                section.id
-                                                                            )
-                                                                        "
-                                                                        class="btn btn-info"
-                                                                        ><i
-                                                                            class="fa fa-edit"
-                                                                        ></i
-                                                                    ></Link>
-                                                                    <button
-                                                                        type="submit"
-                                                                        @click="
-                                                                            destory(section.id)" class="btn btn-danger">
-                                                                        <i
-                                                                            class="fa fa-trash"
-                                                                        ></i>
-                                                                    </button>
+                                                                            route('attentance.show',section.id)"
+                                                                        class="btn btn-info">
+                                                                        قائمة الطلاب
+                                                                    </Link>
+
                                                                 </div>
                                                             </td>
                                                         </tr>
@@ -210,115 +197,7 @@
             </div>
         </div>
     </div>
-    <!-- Modal -->
-    <div
-        class="modal fade"
-        id="staticBackdrop"
-        tabindex="-1"
-        aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
 
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">اضافة صف</h5>
-                    <button
-                        type="button"
-                        class="close"
-                        data-dismiss="modal"
-                        aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form
-                        role="form"
-                        @submit.prevent="form.post(route('section.store'))">
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">اسم الصف</label>
-                            <input
-                                v-model="form.section_name"
-                                type="text"
-                                class="form-control"
-                                id="exampleInputEmail1"
-                                aria-describedby="emailHelp"
-                            />
-                            <div
-                                v-if="form.errors.section_name"
-                                v-text="form.errors.section_name"
-                                class="text-danger"
-                            ></div>
-                        </div>
-
-                        <div class="form-group">
-                            <label>اختير المرحلة الدراسية</label>
-                            <select
-                                v-model="form.grade_id"
-                                class="form-control"
-                                style="width: 100%" @change="classss(form.grade_id)">
-                                <option
-                                    v-for="grade in grades"
-                                    :value="grade.id" >
-                                    {{ grade.name }}
-                                </option>
-                            </select>
-                            <div
-                                v-if="form.errors.grade_id"
-                                v-text="form.errors.grade_id"
-                                class="text-danger"
-                            ></div>
-                        </div>
-                        <div class="form-group" v-if="classessRom.length > 0">
-                            <label>اختير الفصل الدراسية</label>
-                            <select
-                                v-model="form.class_room_id"
-                                class="form-control"
-                                style="width: 100%">
-
-                                <option v-for="(classRoom,i) in classessRom" :value="classRoom['id']">
-                                    {{ classRoom["class_name"] }}
-                                </option>
-                            </select>
-                            <div
-                                v-if="form.errors.class_room_id"
-                                v-text="form.errors.class_room_id"
-                                class="text-danger"
-                            ></div>
-                        </div>
-
-                        <div class="form-group">
-                            <label>اختير المعلمين</label>
-                            <select v-model="form.teacher_id" class="form-select" multiple aria-label="multiple select example">
-                                <option v-for="teacher in teachers" :value="teacher.id">{{ teacher.name }}</option>
-
-                            </select>
-                            <div
-                                v-if="form.errors.teacher_id"
-                                v-text="form.errors.teacher_id"
-                                class="text-danger"
-                            ></div>
-                        </div>
-                        <div class="modal-footer">
-                            <button
-                                type="button"
-                                class="btn btn-secondary"
-                                data-dismiss="modal"
-                            >
-                                اغلاق
-                            </button>
-                            <button
-                                type="submit"
-                                class="btn btn-primary"
-                                :disabled="form.processing"
-                            >
-                                اضافة
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
 </template>
 <script>
 import { Inertia } from "@inertiajs/inertia";

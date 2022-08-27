@@ -144,11 +144,11 @@
 
                         <li>
                             <a aria-expanded="false" class="has-arrow" href="javascript:void()">
+                                <i class="la la-dollar">
+                                </i>
                                 <span class="nav-text">
                                     الحسابات
                                 </span>
-                                <i class="la la-building">
-                                </i>
                             </a>
                             <ul aria-expanded="false">
                                 <li>
@@ -169,113 +169,92 @@
                                     </Link>
                                 </li>
 
+                                <li>
+                                    <Link :href="route('processing_fees.index')">
+                                        الرسوم المستبعدة
+                                    </Link>
+                                </li>
+
+                                <li>
+                                    <Link :href="route('payment_fees.index')">
+                                        سندات الصرف
+                                    </Link>
+                                </li>
+
 
                             </ul>
                         </li>
                         <li>
                             <a aria-expanded="false" class="has-arrow" href="javascript:void()">
-                                <span class="nav-text">
-                                    Staff
-                                </span>
                                 <i class="la la-users">
                                 </i>
+                                <span class="nav-text">
+                                    الحضور والغياب
+                                </span>
                             </a>
                             <ul aria-expanded="false">
                                 <li>
-                                    <a href="all-staff.html">
-                                        All Staff
-                                    </a>
+                                    <Link :href="route('attentance.index')">
+                                        قائمة الطلاب
+                                    </Link>
                                 </li>
-                                <li>
-                                    <a href="add-staff.html">
-                                        Add Staff
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="edit-staff.html">
-                                        Edit Staff
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="staff-profile.html">
-                                        Staff Profile
-                                    </a>
-                                </li>
+
                             </ul>
                         </li>
+
                         <li>
                             <a aria-expanded="false" class="has-arrow" href="javascript:void()">
-                                <span class="nav-text">
-                                    Holiday
-                                </span>
-                                <i class="la la-gift">
+                                <i class="la la-book">
                                 </i>
+                                <span class="nav-text">
+                                    المواد الدراسية
+                                </span>
                             </a>
                             <ul aria-expanded="false">
                                 <li>
-                                    <a href="all-holiday.html">
-                                        All Holiday
-                                    </a>
+                                    <Link :href="route('subject.index')">
+                                        قائمة المواد
+                                    </Link>
                                 </li>
-                                <li>
-                                    <a href="add-holiday.html">
-                                        Add Holiday
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="edit-holiday.html">
-                                        Edit Holiday
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="holiday-calendar.html">
-                                        Holiday Calendar
-                                    </a>
-                                </li>
+
                             </ul>
                         </li>
                         <li>
                             <a aria-expanded="false" class="has-arrow" href="javascript:void()">
-                                <span class="nav-text">
-                                    Fees
-                                </span>
-                                <i class="la la-dollar">
+                                <i class="la la-question-circle">
                                 </i>
+                                <span class="nav-text">
+                                    الامتحانات
+                                </span>
                             </a>
                             <ul aria-expanded="false">
                                 <li>
-                                    <a href="fees-collection.html">
-                                        Fees Collection
-                                    </a>
+                                    <Link :href="route('exam.index')">
+                                        قائمة الامتحانات
+                                    </Link>
                                 </li>
                                 <li>
-                                    <a href="add-fees.html">
-                                        Add Fees
-                                    </a>
+                                    <Link :href="route('question.index')">
+                                        قائمة الاسئلة
+                                    </Link>
                                 </li>
-                                <li>
-                                    <a href="fees-receipt.html">
-                                        Fees Receipt
-                                    </a>
-                                </li>
+
                             </ul>
                         </li>
-                        <li class="nav-label">
-                            Apps
-                        </li>
+
                         <li>
                             <a aria-expanded="false" class="has-arrow" href="javascript:void()">
-                                <span class="nav-text">
-                                    Apps
-                                </span>
                                 <i class="la la-users">
                                 </i>
+                                <span class="nav-text">
+                                    الحصص الاونلاين
+                                </span>
                             </a>
                             <ul aria-expanded="false">
                                 <li>
-                                    <a href="./app-profile.html">
-                                        Profile
-                                    </a>
+                                    <Link :href="route('classes.index')">
+                                        قائمة الحصص
+                                    </Link>
                                 </li>
                                 <li>
                                     <a aria-expanded="false" class="has-arrow" href="javascript:void()">

@@ -5,10 +5,10 @@ namespace App\Http\Controllers\Backend\Sections;
 use App\Http\Controllers\Controller;
 use App\Http\Repository\Interface\ClassRoomRepositoryInterface;
 use App\Http\Repository\Interface\GradeRepositoryInterface;
-use Illuminate\Http\Request;
-use Inertia\Inertia;
 use App\Http\Repository\Interface\SectionRepositoryInterface;
 use App\Http\Repository\Interface\TeacherRepositoryInterface;
+use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class SectionController extends Controller
 {

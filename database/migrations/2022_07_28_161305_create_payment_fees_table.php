@@ -13,13 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('fund_accounts', function (Blueprint $table) {
+        Schema::create('payment_fees', function (Blueprint $table) {
             $table->id();
             $table->date('date');
-            $table->foreignId('receipt_id')->nullable()->references('id')->on('receipt_students')->onDelete('cascade');
-            $table->foreignId('payment_id')->nullable()->references('id')->on('payment_fees')->onDelete('cascade');
-            $table->decimal('debit',8,2)->nullable();
-            $table->decimal('credit',8,2)->nullable();
+            $table->foreignId('student_id')->references('id')->on('students')->onDelete('cascade');
+            $table->decimal('amount',8,2)->nullable();
             $table->text('notes')->nullable();
             $table->timestamps();
         });
@@ -32,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('fund_accounts');
+        Schema::dropIfExists('payments');
     }
 };
