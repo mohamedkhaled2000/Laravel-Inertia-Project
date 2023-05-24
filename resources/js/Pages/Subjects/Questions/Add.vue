@@ -53,21 +53,21 @@
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">الاجابة 1</label>
-                                            <input :value="" v-model="form.answers[0]" type="text" class="form-control">
+                                            <input v-model="form.answers[0]" type="text" class="form-control">
                                             <div v-if="form.errors.answer" v-text="form.errors.answer" class="text-danger"></div>
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">الاجابة 2</label>
-                                            <input :value="" v-model="form.answers[1]" type="text" class="form-control">
+                                            <input v-model="form.answers[1]" type="text" class="form-control">
                                             <div v-if="form.errors.answer" v-text="form.errors.answer" class="text-danger"></div>
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">الاجابة 3</label>
-                                            <input :value="" v-model="form.answers[2]" type="text" class="form-control">
+                                            <input v-model="form.answers[2]" type="text" class="form-control">
                                             <div v-if="form.errors.answer" v-text="form.errors.answer" class="text-danger"></div>
                                         </div>
                                     </div>

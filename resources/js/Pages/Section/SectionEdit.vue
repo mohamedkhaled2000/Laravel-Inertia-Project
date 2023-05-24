@@ -25,137 +25,113 @@
 
             <div class="row">
                 <div class="col-12">
-                    <form
-                        role="form"
-                        @submit.prevent="
-                            form.post(route('section.update', section.id))
-                        "
-                    >
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">اسم الصف</label>
-                            <input
-                                v-model="form.section_name"
-                                type="text"
-                                class="form-control"
-                                id="exampleInputEmail1"
-                                aria-describedby="emailHelp"
-                            />
-                            <div
-                                v-if="form.errors.section_name"
-                                v-text="form.errors.section_name"
-                                class="text-danger"
-                            ></div>
-                        </div>
-
-                        <div class="form-group">
-                            <label>اختير المرحلة الدراسية</label>
-                            <select
-                                v-model="form.grade_id"
-                                class="form-control"
-                                style="width: 100%"
-                                @change="classss(form.grade_id)"
+                    <div class="card">
+                        <div class="card-body">
+                            <form
+                                role="form"
+                                @submit.prevent="
+                                    form.post(route('section.update', section.id))
+                                "
                             >
-                                <option
-                                    v-for="grade in grades"
-                                    :value="grade.id"
-                                >
-                                    {{ grade.name }}
-                                </option>
-                            </select>
-                            <div
-                                v-if="form.errors.grade_id"
-                                v-text="form.errors.grade_id"
-                                class="text-danger"
-                            ></div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">اسم الصف</label>
+                                    <input
+                                        v-model="form.section_name"
+                                        type="text"
+                                        class="form-control"
+                                        id="exampleInputEmail1"
+                                        aria-describedby="emailHelp"
+                                    />
+                                    <div
+                                        v-if="form.errors.section_name"
+                                        v-text="form.errors.section_name"
+                                        class="text-danger"
+                                    ></div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>اختير المرحلة الدراسية</label>
+                                    <select
+                                        v-model="form.grade_id"
+                                        class="form-control"
+                                        style="width: 100%"
+                                        @change="classss(form.grade_id)"
+                                    >
+                                        <option
+                                            v-for="grade in grades"
+                                            :value="grade.id"
+                                        >
+                                            {{ grade.name }}
+                                        </option>
+                                    </select>
+                                    <div
+                                        v-if="form.errors.grade_id"
+                                        v-text="form.errors.grade_id"
+                                        class="text-danger"
+                                    ></div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>اختير الفصل الدراسية</label>
+                                    <select
+                                        v-model="form.class_room_id"
+                                        class="form-control"
+                                        style="width: 100%">
+
+                                        <option v-for="classRoom in classessRom" :value="classRoom['id']">
+                                            {{ classRoom["class_name"] }}
+                                        </option>
+                                    </select>
+                                    <div
+                                        v-if="form.errors.class_room_id"
+                                        v-text="form.errors.class_room_id"
+                                        class="text-danger"
+                                    ></div>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label>اختير المعلمين</label>
+                                    <select v-model="form.teacher_id" class="form-control" multiple aria-label="multiple select example" style="width: 100%">
+                                        <option v-for="teacher in teachers" :value="teacher.id" >{{ teacher.name }} {{checkTeacher(teacher.id)}} </option> <!-- :selected="checkTeacher(teacher.id)" -->
+                                    </select>
+                                    <div
+                                        v-if="form.errors.teacher_id"
+                                        v-text="form.errors.teacher_id"
+                                        class="text-danger"
+                                    ></div>
+
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label>اختير الحالة</label>
+                                    <select
+                                        v-model="form.status"
+                                        class="form-control"
+                                        style="width: 100%"
+                                    >
+                                        <option :value="1">نشط</option>
+                                        <option :value="0">معلق</option>
+                                    </select>
+                                    <div
+                                        v-if="form.errors.class_room_id"
+                                        v-text="form.errors.class_room_id"
+                                        class="text-danger"
+                                    ></div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button
+                                        type="submit"
+                                        class="btn btn-primary"
+                                        :disabled="form.processing"
+                                    >
+                                        تعديل
+                                    </button>
+                                </div>
+                            </form>
                         </div>
-
-                        <div class="form-group" v-if="classessRom.length > 0">
-                            <label>اختير الفصل الدراسية</label>
-                            <select
-                                v-model="form.class_room_id"
-                                class="form-control"
-                                style="width: 100%">
-
-                                <option v-for="classRoom in classessRom" :value="classRoom['id']">
-                                    {{ classRoom["class_name"] }}
-                                </option>
-                            </select>
-                            <div
-                                v-if="form.errors.class_room_id"
-                                v-text="form.errors.class_room_id"
-                                class="text-danger"
-                            ></div>
-                        </div>
-
-
-                        <div class="form-group" v-else>
-                            <label>اختير الفصل الدراسية</label>
-                            <select
-                                v-model="form.class_room_id"
-                                class="form-control"
-                                style="width: 100%"
-                            >
-                                <option
-                                    v-for="classes in classRom"
-                                    :value="classes.id"
-                                    :class="{ 'd-none': !form.grade_id }"
-                                >
-                                    {{
-                                        classes.grade_id == form.grade_id
-                                            ? classes.class_name
-                                            : null
-                                    }}
-                                </option>
-                            </select>
-                            <div
-                                v-if="form.errors.class_room_id"
-                                v-text="form.errors.class_room_id"
-                                class="text-danger"
-                            ></div>
-                        </div>
-
-                        <div class="form-group">
-                            <label>اختير المعلمين</label>
-                            <select v-model="form.teacher_id" class="form-select" multiple aria-label="multiple select example" style="width: 100%">
-                                <option v-for="teach in section.teachers" :value="teach.id" Selected>{{ teach.name }}</option>
-                                <option v-for="teacher in teachers" :value="teacher.id">{{ teacher.name }}</option>
-
-                            </select>
-                            <div
-                                v-if="form.errors.teacher_id"
-                                v-text="form.errors.teacher_id"
-                                class="text-danger"
-                            ></div>
-
-                        </div>
-
-
-                        <div class="form-group">
-                            <label>اختير الحالة</label>
-                            <select
-                                v-model="form.status"
-                                class="form-control"
-                                style="width: 100%"
-                            >
-                                <option :value="1">نشط</option>
-                                <option :value="0">معلق</option>
-                            </select>
-                            <div
-                                v-if="form.errors.class_room_id"
-                                v-text="form.errors.class_room_id"
-                                class="text-danger"
-                            ></div>
-                        </div>
-                        <div class="modal-footer">
-                            <button
-                                type="submit"
-                                class="btn btn-primary"
-                                :disabled="form.processing"
-                            >
-                                تعديل
-                            </button>
-                        </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -171,26 +147,28 @@ export default {
         grades: Object,
         classRom: Object,
         teachers: Object,
-
     },
 
-      data(){
-      return {
-          classessRom : [],
-      }
-  },
+    data(){
+        return {
+            classessRom : [],
+        }
+    },
 
-  methods:{
-      classss(id){
+    methods:{
+        classss(id){
             this.classessRom = []
+            this.classessRom = this.classRom.filter((el) => el.grade_id == id)
+        },
 
-            this.classRom.forEach(el => {
-                if(el.grade_id == id){
-                    this.classessRom.push(el)
-                }
-            });
-      }
-  },
+        checkTeacher(teacher_id) {
+            return  this.section.teachers.filter(teach => teach.id == teacher_id);
+        }
+    },
+
+    mounted(){
+        this.classessRom = this.classRom.filter((el) => el.grade_id == this.section.grade_id)
+    },
 
     setup(props) {
         let form = useForm({

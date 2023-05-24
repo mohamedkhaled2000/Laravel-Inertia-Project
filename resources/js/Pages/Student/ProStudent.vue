@@ -60,7 +60,7 @@
                                     </div>
 
                                     <div class="col-md-3 col-sm-12">
-                                        <div class="form-group" v-if="classessRom.length > 0">
+                                        <div class="form-group">
                                             <label>الصف الدراسى</label>
                                             <select
                                                 v-model="form.class_room_id"
@@ -80,7 +80,7 @@
                                     </div>
 
                                     <div class="col-md-3 col-sm-12">
-                                        <div class="form-group" v-if="sectionss.length > 0">
+                                        <div class="form-group">
                                             <label>القسم</label>
                                             <select
                                                 v-model="form.section_id"
@@ -145,7 +145,7 @@
                                     </div>
 
                                     <div class="col-md-3 col-sm-12">
-                                        <div class="form-group" v-if="new_classessRom.length > 0">
+                                        <div class="form-group">
                                             <label>الصف الدراسى</label>
                                             <select
                                                 v-model="form.new_class_room_id"
@@ -165,7 +165,7 @@
                                     </div>
 
                                     <div class="col-md-3 col-sm-12">
-                                        <div class="form-group" v-if="new_sectionss.length > 0">
+                                        <div class="form-group">
                                             <label>القسم</label>
                                             <select
                                                 v-model="form.new_section_id"
@@ -211,9 +211,6 @@
                                     تاكيد
                                 </button>
                             </form>
-
-
-
                         </div>
                     </div>
                     </div>
@@ -252,42 +249,22 @@ export default {
     methods:{
         classss(id){
             this.classessRom = []
-
-            this.classRom.forEach(el => {
-                if(el.grade_id == id){
-                    this.classessRom.push(el)
-                }
-            });
+            this.classessRom = this.classRom.filter((el) => el.grade_id == id)
         },
 
         section(id){
             this.sectionss = []
-
-            this.sections.forEach(el => {
-                if(el.class_room_id == id){
-                    this.sectionss.push(el)
-                }
-            });
+            this.sectionss = this.sections.filter((el) => el.class_room_id == id)
         },
 
         new_classss(id){
             this.new_classessRom = []
-
-            this.classRom.forEach(el => {
-                if(el.grade_id == id){
-                    this.new_classessRom.push(el)
-                }
-            });
+            this.new_classessRom = this.classRom.filter((el) => el.grade_id == id)
         },
 
         new_section(id){
             this.new_sectionss = []
-
-            this.sections.forEach(el => {
-                if(el.class_room_id == id){
-                    this.new_sectionss.push(el)
-                }
-            });
+            this.new_sectionss = this.sections.filter((el) => el.class_room_id == id)
         },
     },
     setup(){

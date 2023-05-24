@@ -38,7 +38,10 @@
 
                     <div class="card-header">
                         <Link :href="route('classes.create')" class="btn btn-success">
-                            حصة جديدة
+                            حصة جديدة مباشر
+                        </Link>
+                        <Link :href="route('classes.show',1)" class="btn btn-primary">
+                            حصة جديدة يدوى
                         </Link>
                     </div>
 
@@ -71,7 +74,7 @@
                                 <td>{{ cl.grade.name }}</td>
                                 <td>{{ cl.class_room.class_name }}</td>
                                 <td>{{ cl.section.section_name }}</td>
-                                <td>{{ cl.user }}</td>
+                                <td>{{ cl.user.name }}</td>
                                 <td>{{ cl.start_time }}</td>
                                 <td>{{ cl.duration }}</td>
                                 <td>

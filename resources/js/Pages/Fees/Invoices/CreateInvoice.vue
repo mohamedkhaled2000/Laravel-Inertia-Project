@@ -67,6 +67,7 @@
                                         <div class="col">
                                             <div class="form-group" v-for="(am,index) in form.fee" :key="index">
                                                 <label for="exampleInputEmail1">المبلغ</label>
+                                                <div class="d-flex">
                                                     <select
                                                         v-model="am.amount"
                                                         class="form-control"
@@ -78,12 +79,13 @@
                                                             {{ fe.price }}
                                                         </option>
                                                     </select>
-                                                    <div v-if="form.errors.amount" v-text="form.errors.amount" class="text-danger"></div>
-                                                <div class="col-2">
-                                                    <button class="btn btn-danger btn-sm" @click="DeleteField(index)">
-                                                        <i class="fa fa-trash" title="حذف"></i>
+
+                                                    <button class="btn btn-danger btn-sm mr-1" v-if="form.fee.length != 1" @click="DeleteField(index)">
+                                                        <i class="fa fa-trash" title="حذف"> </i>
                                                     </button>
                                                 </div>
+
+                                                <div v-if="form.errors.amount" v-text="form.errors.amount" class="text-danger"></div>
                                             </div>
                                         </div>
 
@@ -131,7 +133,7 @@ export default {
                 student_id : this.student.id,
                 grade_id : this.student.grade_id,
                 class_room_id : this.student.class_room_id,
-                fee : [],
+                fee : [{fee: '',amount: ''}],
                 notes :"",
             }),
 

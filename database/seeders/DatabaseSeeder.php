@@ -20,5 +20,6 @@ class DatabaseSeeder extends Seeder
         $this->call(ReligionSeed::class);
         $this->call(Specialize::class);
         $this->call(UserSeeder::class);
+        $this->call(SettingSeeder::class);
     }
 }

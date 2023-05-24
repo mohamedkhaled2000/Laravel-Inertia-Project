@@ -57,7 +57,6 @@ class User extends Authenticatable
      */
     protected $appends = [
         'profile_photo_url',
-        'background_photo',
     ];
 
     // public function setPasswordAttribute($value)

@@ -29,8 +29,6 @@
                     <div class="col-xl-12 col-xxl-12">
 
                     <div class="card">
-                        <div class="card-header">
-                        </div>
                         <div class="card-body">
                             <form @submit.prevent="submit">
                                 <h3 class="text-primary">المعلومات الشخصية</h3>
@@ -207,7 +205,7 @@
                                     </div>
 
                                     <div class="col-md-3 col-sm-12">
-                                        <div class="form-group" v-if="classessRom.length > 0">
+                                        <div class="form-group">
                                             <label>الصف الدراسى</label>
                                             <select
                                                 v-model="form.class_room_id"
@@ -227,7 +225,7 @@
                                     </div>
 
                                     <div class="col-md-3 col-sm-12">
-                                        <div class="form-group" v-if="sections.length > 0">
+                                        <div class="form-group">
                                             <label>القسم</label>
                                             <select
                                                 v-model="form.section_id"
@@ -307,9 +305,6 @@
                                     اضافة
                                 </button>
                             </form>
-
-
-
                         </div>
                     </div>
                     </div>
@@ -342,23 +337,14 @@ export default {
     methods:{
         classss(id){
             this.classessRom = []
-
-            this.data.class_room_id.forEach(el => {
-                if(el.grade_id == id){
-                    this.classessRom.push(el)
-                }
-            });
+            this.classessRom = this.data.class_room_id.filter((el) => el.grade_id == id)
         },
 
         section(id){
             this.sections = []
-
-            this.data.section_id.forEach(el => {
-                if(el.class_room_id == id){
-                    this.sections.push(el)
-                }
-            });
+            this.sections = this.data.section_id.filter((el) => el.class_room_id == id)
         },
+
         getYear(){
             var current = new Date().getFullYear();
             for(let y=current; y<=current; y++){

@@ -210,6 +210,7 @@
             </div>
         </div>
     </div>
+
     <!-- Modal -->
     <div
         class="modal fade"
@@ -288,7 +289,7 @@
 
                         <div class="form-group">
                             <label>اختير المعلمين</label>
-                            <select v-model="form.teacher_id" class="form-select" multiple aria-label="multiple select example">
+                            <select v-model="form.teacher_id" class="form-control" multiple aria-label="multiple select example">
                                 <option v-for="teacher in teachers" :value="teacher.id">{{ teacher.name }}</option>
 
                             </select>

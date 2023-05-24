@@ -82,9 +82,8 @@ class TeacherController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(TeacherRequest $request, $id)
+    public function update(Request $request, $id)
     {
-        $request->validated();
         $this->teacher->updateTeacher($request,$id);
         return redirect()->route('teacher.index')->with(['message' => 'تم تعديل المدرس بنجاح']);
 

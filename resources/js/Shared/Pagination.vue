@@ -1,4 +1,4 @@
-<template lang="">
+<template>
     <div class="pagination">
             <Component
                 :is="link.url ? 'Link' : 'span'"

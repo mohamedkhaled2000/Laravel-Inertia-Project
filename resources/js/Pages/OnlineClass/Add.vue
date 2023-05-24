@@ -1,5 +1,5 @@
 <template lang="">
-    <Head title="انشاء حصة جديدة" />
+    <Head title="انشاء حصة جديدة مباشر" />
 
 
     <div  class="content-body">
@@ -19,7 +19,7 @@
                         <Link href="/">الرئيسية</Link>
                         </li>
                         <li class="breadcrumb-item active">
-                        <a href="javascript:void(0)">انشاء حصة جديدة</a>
+                        <a href="javascript:void(0)">انشاء حصة جديدة مباشر</a>
                         </li>
                     </ol>
                     </div>
@@ -58,7 +58,6 @@
                         <div class="card-header">
                         </div>
                         <div class="card-body">
-                                <h4>المرحلة الدراسية </h4><br>
                             <form @submit.prevent="submit">
                                 <div class="row">
 

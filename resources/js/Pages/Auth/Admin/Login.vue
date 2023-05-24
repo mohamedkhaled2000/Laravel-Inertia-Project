@@ -1,4 +1,4 @@
-<template lang="">
+<template>
     <Head>
         <title>تسجيل الدخول</title>
         <meta type="description" content="Login Informations" />
@@ -13,8 +13,8 @@
               <div class="row no-gutters">
                 <div class="col-xl-12">
                   <div class="auth-form">
-                    <h4 class="text-center mb-4">تسجيل الدخول</h4>
-                    <form @submit.prevent="loginForm.post(route('login'))">
+                    <h4 class="text-center mb-4">تسجيل الدخول الادمن</h4>
+                    <form @submit.prevent="loginForm.post(route('admin.login'))">
                       <div class="form-group">
                         <label><strong>البريد الالكترونى</strong></label>
                         <input
@@ -80,23 +80,20 @@
       </div>
     </div>
 
-
-
-
 </template>
 
 <script>
-    export default {
-        layout: false,
-    };
+import {useForm} from "@inertiajs/inertia-vue3";
+
+export default {
+    layout: false,
+    setup(props) {
+        const loginForm = useForm({
+            email: "",
+            password: "",
+        });
+        return {loginForm}
+    }
+};
 </script>
 
-<script setup>
-    import { useForm } from "@inertiajs/inertia-vue3";
-    const loginForm = useForm({
-        email: "",
-        password: "",
-    });
-
-
-</script>

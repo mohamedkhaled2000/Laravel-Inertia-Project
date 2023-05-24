@@ -37,6 +37,40 @@ class HandleInertiaRequests extends Middleware
      */
     public function share(Request $request): array
     {
+        $userData = [];
+         if (Auth::guard('student')->check()) {
+            $user = Auth::guard('student')->user();
+            $userData = [
+                'id' => $user->id ,
+                'name' => $user->name ,
+                'email' => $user->email ,
+                'image' => asset('upload/No-Image.svg.png') ,
+                'cover' => asset('backend/images/profile/cover.jpg')
+            ];
+//        } elseif (Auth::guard('teacher')->check()) {
+//            $user = Auth::guard('teacher')->user();
+//            $userData = [
+//                'id' => $user->id ,
+//                'name' => $user->name ,
+//                'email' => $user->email ,
+//            ];
+//        } elseif (Auth::guard('parent')->check()) {
+//            $user = Auth::guard('parent')->user();
+//            $userData = [
+//                'id' => $user->id ,
+//                'name' => $user->name ,
+//                'email' => $user->email ,
+//            ];
+        } else {
+             $user = Auth::user();
+             $userData = [
+                 'id' => $user->id ?? '' ,
+                 'username' => $user->name ?? '' ,
+                 'email' => $user->email ?? '' ,
+                 'image' => $user->profile_photo_path ?? '' == null ? $user->profile_photo_url ?? '' : $user->profile_photo_path,
+                 'cover' => $user->background_photo ?? '' == null ? asset('backend/images/profile/cover.jpg') : $user->background_photo
+             ];
+         }
         return array_merge(parent::share($request), [
 
             'flash' => [
@@ -44,23 +78,8 @@ class HandleInertiaRequests extends Middleware
                 'error'  => session('error')
             ],
 
-            'auth' => Auth::check() ? [
-                'user' => [
-                    'id' => Auth::user()->id ,
-                    'username' => Auth::user()->name ,
-                    'email' => Auth::user()->email ,
-                    'image' => Auth::user()->profile_photo_path == null ? Auth::user()->profile_photo_url : Auth::user()->profile_photo_path,
-                    'cover' => Auth::user()->background_photo == null ? asset('backend/images/profile/cover.jpg') : Auth::user()->background_photo
-                ]
-            ] :
-
-            [
-                'user' => [
-                    'id' => 1 ,
-                    'username' => 'admin' ,
-                    'email' => 'admin@admon.com' ,
-                    'image' =>  'upload/No-Image.svg.png'
-                ]
+            'auth' => [
+                'user' => $userData
             ]
         ]);
     }

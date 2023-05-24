@@ -17,14 +17,26 @@ class RedirectIfAuthenticated
      * @param  string|null  ...$guards
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
-    public function handle(Request $request, Closure $next, ...$guards)
+    public function handle(Request $request, Closure $next, $guard = null)
     {
-        $guards = empty($guards) ? [null] : $guards;
-
-        foreach ($guards as $guard) {
-            if (Auth::guard($guard)->check()) {
+        if (Auth::guard($guard)->check()) {
+            if (auth('web')->check()) {
                 return redirect(RouteServiceProvider::HOME);
             }
+
+            if (auth('student')->check()) {
+                return redirect(RouteServiceProvider::STUDENT);
+            }
+
+            if (auth('teacher')->check()) {
+                return redirect(RouteServiceProvider::TEACHER);
+            }
+
+            if (auth('parent')->check()) {
+                return redirect(RouteServiceProvider::PARENT);
+            }
+
+            return $next($request);
         }
 
         return $next($request);

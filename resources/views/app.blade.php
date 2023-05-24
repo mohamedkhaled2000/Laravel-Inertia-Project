@@ -134,12 +134,9 @@
 
 <!DOCTYPE html>
 <html>
-
-<head>
-
-
-    <meta charset="utf-8">
-    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <head>
+        <meta charset="utf-8">
+        <meta content="IE=edge" http-equiv="X-UA-Compatible">
         <meta content="" name="keywords"/>
         <meta content="" name="author"/>
         <meta content="" name="robots"/>
@@ -148,41 +145,40 @@
         <meta content="Edumin - Bootstrap Admin Dashboard" property="og:description"/>
         <meta content="https://edumin.dexignlab.com/xhtml/social-image.png" property="og:image"/>
         <meta content="telephone=no" name="format-detection">
-            <!-- FAVICONS ICON -->
-            <link href="images/favicon.ico" rel="icon" type="image/x-icon"/>
-            <link href="images/favicon.png" rel="shortcut icon" type="image/x-icon"/>
-            <!-- MOBILE SPECIFIC -->
-            <meta content="width=device-width, initial-scale=1" name="viewport">
-                <!-- STYLESHEETS -->
-            <link href="{{asset('backend/vendor/bootstrap-select/dist/css/bootstrap-select.min.css')}}" rel="stylesheet">
-            <link href="{{asset('backend/css/style.css')}}" rel="stylesheet">
-            <link href="{{asset('backend/css/skin.css')}}" rel="stylesheet">
+        <!-- FAVICONS ICON -->
+        <link href="images/favicon.ico" rel="icon" type="image/x-icon"/>
+        <link href="images/favicon.png" rel="shortcut icon" type="image/x-icon"/>
+        <!-- MOBILE SPECIFIC -->
+        <meta content="width=device-width, initial-scale=1" name="viewport">
+            <!-- STYLESHEETS -->
+        <link href="{{asset('backend/vendor/bootstrap-select/dist/css/bootstrap-select.min.css')}}" rel="stylesheet">
+        <link href="{{asset('backend/css/style.css')}}" rel="stylesheet">
+        <link href="{{asset('backend/css/skin.css')}}" rel="stylesheet">
+        <link href="{{asset('backend/vendor/jquery-steps/css/jquery.steps.css')}}" rel="stylesheet" />
+
+        <link
+            href="{{asset('backend/vendor/bootstrap-select/dist/css/bootstrap-select.min.css')}}"
+            rel="stylesheet"
+        />
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400&display=swap" rel="stylesheet">
 
 
-    <link href="{{asset('backend/vendor/jquery-steps/css/jquery.steps.css')}}" rel="stylesheet" />
-    <link
-    href="{{asset('backend/vendor/bootstrap-select/dist/css/bootstrap-select.min.css')}}"
-    rel="stylesheet"
-    />
+        <!-- Custom style for RTL -->
+        <link rel="stylesheet" href="{{asset('backend/dist/css/tagsinput.css')}}" />
+        <link rel="stylesheet" href="{{asset('backend/dist/css/custom.css')}}" />
+        <link rel="stylesheet" href="{{asset('backend/css/dropzone.css')}}" />
+        <link href="https://unpkg.com/@yaireo/tagify/dist/tagify.css" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+        <link href="{{ mix('/css/app.css') }}" rel="stylesheet" />
+        @routes
+        <script src="{{ mix('/js/app.js') }}" defer></script>
+        @inertiaHead
+    </head>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400&display=swap" rel="stylesheet">
-
-
-    <!-- Custom style for RTL -->
-    <link rel="stylesheet" href="{{asset('backend/dist/css/tagsinput.css')}}" />
-    <link rel="stylesheet" href="{{asset('backend/dist/css/custom.css')}}" />
-    <link rel="stylesheet" href="{{asset('backend/css/dropzone.css')}}" />
-    <link href="https://unpkg.com/@yaireo/tagify/dist/tagify.css" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-    <link href="{{ mix('/css/app.css') }}" rel="stylesheet" />
-    @routes
-    <script src="{{ mix('/js/app.js') }}" defer></script>
-    @inertiaHead
-</head>
-
-<body>
+    <body>
         <div id="preloader">
             <div class="sk-three-bounce">
                 <div class="sk-child sk-bounce1">
@@ -197,123 +193,123 @@
             @inertia
         </div>
 
-    <!-- Required vendors -->
-    <script src="{{asset('backend/vendor/global/global.min.js')}}">
-    </script>
-    <script src="{{asset('backend/vendor/bootstrap-select/dist/js/bootstrap-select.min.js')}}">
-    </script>
-    <script src="{{asset('backend/js/custom.min.js')}}">
-    </script>
-    <script src="{{asset('backend/./js/dlabnav-init.js')}}"></script>
-    <!-- Chart Morris plugin files -->
-    <script src="{{asset('backend/./vendor/raphael/raphael.min.js')}}">
-    </script>
-    <script src="{{asset('backend/./vendor/morris/morris.min.js')}}">
-    </script>
-    <!-- Chart piety plugin files -->
-    <script src="{{asset('backend/./vendor/peity/jquery.peity.min.js')}}">
-    </script>
-    <!-- Demo scripts -->
-    <script src="{{asset('backend/js/dashboard/dashboard-2.js')}}">
-    </script>
-    <!-- Svganimation scripts -->
-    <script src="{{asset('backend/vendor/svganimation/vivus.min.js')}}">
-    </script>
-    <script src="{{asset('backend/vendor/svganimation/svg.animation.js')}}">
-    </script>
+        <!-- Required vendors -->
+        <script src="{{asset('backend/vendor/global/global.min.js')}}">
+        </script>
+        <script src="{{asset('backend/vendor/bootstrap-select/dist/js/bootstrap-select.min.js')}}">
+        </script>
+        <script src="{{asset('backend/js/custom.js')}}">
+        </script>
+        <script src="{{asset('backend/./js/dlabnav-init.js')}}"></script>
+        <!-- Chart Morris plugin files -->
+        <script src="{{asset('backend/./vendor/raphael/raphael.min.js')}}">
+        </script>
+        <script src="{{asset('backend/./vendor/morris/morris.min.js')}}">
+        </script>
+        <!-- Chart piety plugin files -->
+        <script src="{{asset('backend/./vendor/peity/jquery.peity.min.js')}}">
+        </script>
+        <!-- Demo scripts -->
+        <script src="{{asset('backend/js/dashboard/dashboard-2.js')}}">
+        </script>
+        <!-- Svganimation scripts -->
+        <script src="{{asset('backend/vendor/svganimation/vivus.min.js')}}">
+        </script>
+        <script src="{{asset('backend/vendor/svganimation/svg.animation.js')}}">
+        </script>
 
-    <script src="{{asset('backend/js/dropzone.js')}}">
-    </script>
+        <script src="{{asset('backend/js/dropzone.js')}}">
+        </script>
 
-<script src="{{asset('backend/./vendor/jquery-steps/build/jquery.steps.min.js')}}"></script>
-<script src="{{asset('backend/./vendor/jquery-validation/jquery.validate.min.js')}}"></script>
-<!-- Form validate init -->
-<script src="{{asset('backend/./js/plugins-init/jquery.validate-init.js')}}"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.0/js/bootstrap.min.js"></script>
-<script src="https://unpkg.com/@yaireo/tagify"></script>
-<script src="https://unpkg.com/@yaireo/tagify@3.1.0/dist/tagify.polyfills.min.js"></script>
+        <script src="{{asset('backend/./vendor/jquery-steps/build/jquery.steps.min.js')}}"></script>
+        <script src="{{asset('backend/./vendor/jquery-validation/jquery.validate.min.js')}}"></script>
+        <!-- Form validate init -->
+        <script src="{{asset('backend/./js/plugins-init/jquery.validate-init.js')}}"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.0/js/bootstrap.min.js"></script>
+        <script src="https://unpkg.com/@yaireo/tagify"></script>
+        <script src="https://unpkg.com/@yaireo/tagify@3.1.0/dist/tagify.polyfills.min.js"></script>
 
 
 
-<script src="{{asset('backend/js/repeater.js')}}"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.14/vue.js"></script>
-    <!-- Form step init -->
-<script src="{{asset('backend/./js/plugins-init/jquery-steps-init.js')}}"></script>
-<script>
-    $(document).ready(function(){
+        <script src="{{asset('backend/js/repeater.js')}}"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.14/vue.js"></script>
+        <!-- Form step init -->
+        <script src="{{asset('backend/./js/plugins-init/jquery-steps-init.js')}}"></script>
+        <script>
+            $(document).ready(function(){
 
-    var current_fs, next_fs, previous_fs; //fieldsets
-    var opacity;
+            var current_fs, next_fs, previous_fs; //fieldsets
+            var opacity;
 
-    $(".next").click(function(){
+            $(".next").click(function(){
 
-        current_fs = $(this).parent();
-        next_fs = $(this).parent().next();
+                current_fs = $(this).parent();
+                next_fs = $(this).parent().next();
 
-        //Add Class Active
-        $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+                //Add Class Active
+                $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
 
-        //show the next fieldset
-        next_fs.show();
-        //hide the current fieldset with style
-        current_fs.animate({opacity: 0}, {
-            step: function(now) {
-                // for making fielset appear animation
-                opacity = 1 - now;
+                //show the next fieldset
+                next_fs.show();
+                //hide the current fieldset with style
+                current_fs.animate({opacity: 0}, {
+                    step: function(now) {
+                        // for making fielset appear animation
+                        opacity = 1 - now;
 
-                current_fs.css({
-                    'display': 'none',
-                    'position': 'relative'
+                        current_fs.css({
+                            'display': 'none',
+                            'position': 'relative'
+                        });
+                        next_fs.css({'opacity': opacity});
+                    },
+                    duration: 600
                 });
-                next_fs.css({'opacity': opacity});
-            },
-            duration: 600
-        });
-    });
+            });
 
-    $(".previous").click(function(){
+            $(".previous").click(function(){
 
-        current_fs = $(this).parent();
-        previous_fs = $(this).parent().prev();
+                current_fs = $(this).parent();
+                previous_fs = $(this).parent().prev();
 
-        //Remove class active
-        $("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");
+                //Remove class active
+                $("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");
 
-        //show the previous fieldset
-        previous_fs.show();
+                //show the previous fieldset
+                previous_fs.show();
 
-        //hide the current fieldset with style
-        current_fs.animate({opacity: 0}, {
-            step: function(now) {
-                // for making fielset appear animation
-                opacity = 1 - now;
+                //hide the current fieldset with style
+                current_fs.animate({opacity: 0}, {
+                    step: function(now) {
+                        // for making fielset appear animation
+                        opacity = 1 - now;
 
-                current_fs.css({
-                    'display': 'none',
-                    'position': 'relative'
+                        current_fs.css({
+                            'display': 'none',
+                            'position': 'relative'
+                        });
+                        previous_fs.css({'opacity': opacity});
+                    },
+                    duration: 600
                 });
-                previous_fs.css({'opacity': opacity});
-            },
-            duration: 600
-        });
-    });
+            });
 
-    $('.radio-group .radio').click(function(){
-        $(this).parent().find('.radio').removeClass('selected');
-        $(this).addClass('selected');
-    });
+            $('.radio-group .radio').click(function(){
+                $(this).parent().find('.radio').removeClass('selected');
+                $(this).addClass('selected');
+            });
 
-    $(".submit").click(function(){
-        return false;
-    })
+            $(".submit").click(function(){
+                return false;
+            })
 
-    });
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.bundle.min.js"></script>
-<script src="{{asset('backend/js/tagsinput.js')}}"></script>
+            });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.bundle.min.js"></script>
+        <script src="{{asset('backend/js/tagsinput.js')}}"></script>
 
-</body>
+    </body>
 
 </html>

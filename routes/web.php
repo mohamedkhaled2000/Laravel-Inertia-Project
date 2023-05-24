@@ -10,6 +10,7 @@ use App\Http\Controllers\Backend\Fees\ReceiptStudentsController;
 use App\Http\Controllers\Backend\Grade\ClassRoomsController;
 use App\Http\Controllers\Backend\Grade\GradeController;
 use App\Http\Controllers\Backend\Sections\SectionController;
+use App\Http\Controllers\Backend\Setting\SettingController;
 use App\Http\Controllers\Backend\Student\Attentances\AttentanceStudentController;
 use App\Http\Controllers\Backend\Student\GraduatedController;
 use App\Http\Controllers\Backend\Student\ParentsController;
@@ -17,6 +18,7 @@ use App\Http\Controllers\Backend\Student\PromotionController;
 use App\Http\Controllers\Backend\Student\StudentController;
 use App\Http\Controllers\Backend\Subjects\AllSubjectsController;
 use App\Http\Controllers\Backend\Subjects\ExamsController;
+use App\Http\Controllers\Backend\Subjects\Library\LibraryController;
 use App\Http\Controllers\Backend\Subjects\QuestionController;
 use App\Http\Controllers\Backend\Teacher\TeacherController;
 use App\Http\Controllers\Backend\UserController;
@@ -34,25 +36,29 @@ use Inertia\Inertia;
 |
 */
 
+Route::get('/',function () {
+    return Inertia::render('Auth/Selection');
+})->name('selection');
 
-Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified'])->group(function () {
-    Route::get('/', function () {
-        return Inertia::render('Home');
-    })->name('dashboard');
-});
+Route::get('/admin/login',function (){
+    return Inertia::render('Auth/Admin/Login');
+})->name('loginAdmin');
 
+Route::post('/login',[UserController::class,'login'])->name('admin.login');
 
-
-Route::middleware('auth')->group(function () {
+Route::middleware('auth:web')->group(function () {
 
 
     /// User Routes
-    Route::get('/', function () {
+    Route::get('/dashboard', function () {
         return Inertia::render('Home');
     })->name('home');
+
     Route::get('/profile', function () {
-        return Inertia::render('Auth/Profile');
+        return Inertia::render('Auth/Admin/Profile');
     });
+
+    Route::get('/logout', [UserController::class, 'logout'])->name('admin.logout');
 
     Route::post('profile/update', [UserController::class,'userLogin']);
     Route::post('update/backcover', [UserController::class,'backCover']);
@@ -141,7 +147,13 @@ Route::middleware('auth')->group(function () {
 
     /// Online Classes Routes
     Route::resource('classes', OnlineClassController::class);
+    Route::post('classes/storeOffline', [OnlineClassController::class,'storeOffline'])->name('storeOffline');
 
+    /// Library Routes
+    Route::resource('library', LibraryController::class);
+
+    /// Settings Routes
+    Route::resource('setting', SettingController::class);
 
     // Route::get('/user', function () {
     //     return Inertia::render('User/index', [
@@ -171,5 +183,3 @@ Route::middleware('auth')->group(function () {
     //     return redirect('/user');
     // });
 });
-
-
